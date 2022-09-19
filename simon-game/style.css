@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Outline&family=Bungee+Shade&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+
+
+
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+h1{
+    text-align: center;
+ 
+
+}
+
+.screen {
+    border: 3px solid black;
+    width: 100%;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4fef4;
+    box-shadow: 0px 0px 40px 25px rgba(255, 250, 232, 0.5);
+    
+}
+
+.screen-text {
+    font-family: 'Press Start 2P';
+    font-size: 22px;
+
+}
+
+.ui-text {
+    font-family: 'Silkscreen';
+    font-size: 18px;
+    padding-top: 10px;
+    text-shadow: 0px 0px 22px 22px black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Container contains entire drum machine */
+
+.container {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    border: 3px solid black;
+    width: 1000px;
+    height: auto;
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: darkgrey;
+
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-rows: 175px 150px 150px 150px;
+    width: 100%;
+    height: 100%;;
+}
+
+
+.parent > .header {
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    display: flex;
+    height: auto;
+    box-shadow: 0px 0px 2px 2px black;
+    
+
+    
+}
+.parent > .pad-container {
+    display: flex;
+    justify-content: center;
+    border-style: solid;
+    border-color: black;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    grid-row-end: 6;
+    height: auto;
+    padding: 5%;
+    
+}
+.parent > .footer {
+    grid-area: footer;
+}
+
+/* Pad Group Parent */
+
+.pad-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: auto;
+    width: auto;
+    font-family: 'Helvetica';
+    margin-top: 30px;
+}
+
+.pad-group > .brand-text {
+    color: black;
+    display: flex;
+    font-family: 'Bungee Shade';
+    font-size: 22px;
+    grid-column-start: 3;
+    grid-column-end: 3;
+    margin-top: 15px;
+    white-space: nowrap;
+    margin-left: 13px;
+
+}
+
+.pad-group > .pad {
+    grid-area: pad;
+    display: flex;
+    width: 150px;
+    height: 150px;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    margin: 15px;
+    justify-content: right;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease 0s;
+}
+
+.pad-group > .pad-1 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    background-color: #E8ECFB;
+    
+}
+
+.pad-group > .pad-2 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    background-color: #B997C7;
+    
+}
+.pad-group > .pad-3 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    background-color: #824D99;
+    
+}
+.pad-group > .pad-4 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: #4D78C3;
+    
+}
+.pad-group > .pad-5 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: #56A2AC ;
+    
+}
+.pad-group > .pad-6 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 2;
+    background-color: #7EB775;
+}
+.pad-group > .pad-7 {
+    grid-column-start: 1;
+    grid-column-end: 1;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-color:#CD2120;
+    
+}
+.pad-group > .pad-8 {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-color: #E57F33;
+    
+}
+.pad-group > .pad-9 {
+    grid-column-start: 3;
+    grid-column-end: 3;
+    grid-row-start: 3;
+    grid-row-end: 3;
+    background-color: #D0B541
+    
+}
+
+.child {
+    border: 2px solid black;
+}
+
+.parent > .nav {
+    display: grid;
+    grid-row-start: 2;
+    grid-row-end: 6;
+    grid-column-start: 1;
+    grid-column-end: 1;
+    font-family: 'VT323', monospace;
+    box-shadow: 0px 0px 1px 1px black;
+    
+    
+}
+
+.nav > .volume {
+    padding-top: 25px;
+    height: 1fr;
+    grid-row-start: 1;
+    
+}
+
+.volume > .slider {
+    grid-column-start: 1;
+    grid-row-start: 1;
+    margin-top: 15px;
+}
+
+.volume > .nav-text {
+    margin-top: 15px;
+}
+.nav > .replay {
+    grid-row-start: 2;
+    grid-column-start: 1;
+    height: 1fr;
+}
+
+.nav > .score {
+    grid-row-start: 3;
+    grid-column-start: 1;
+    height: 1fr;
+}
+
+.nav > .difficulty {
+    grid-row-start: 4;
+    grid-column-start: 1;
+    height: 1fr;
+}
+.nav > .start-game {
+    padding-top: 25px;
+    grid-row-start: 5;
+    grid-column-start: 1;
+    height: 1fr;
+}
+.start-btn {
+    margin-top: 10%;
+}
+
+
+span {
+    opacity: 0;
+    transition: all .7s step-end;
+}
+
+span.fade {
+    opacity: 1;
+}
+
