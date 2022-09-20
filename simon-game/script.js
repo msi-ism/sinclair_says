@@ -215,28 +215,37 @@ console.log(hardPatArr)
 // ** Creating Function to Check User Input against Pattern
 
 let score = 0
+
+let match = false
 const checkAnswer = () => {
+
     if (userChoices.length === easyPatArr.length) {
         for (let i = 0; i < easyPatArr.length; i++) {
             console.log(easyPatArr[i])
             console.log(userChoices[i])
-            if (userChoices[i] === easyPatArr[i]) {
-                result = true
-                screenText.textContent = 'Correct!'
-                score += 100
-                console.log(`The score is ${score}`)
-
-            } else {
-                result = false
-                screenText.textContent = "That's not what I said!"
-                score += 0
+            if (userChoices[i] !== easyPatArr[i]) {
+                console.log('false')
+                return match = false
             }
         }
-        console.log(result)
     } else {
-        setTimeout(checkAnswer, 500)
+        setTimeout(checkAnswer, 500) // run until true
     }
+    return match = true
 }
+
+const displayResult = () =>{
+    if (userChoices.length === easyPatArr.length && match === true) {
+        screenText.textContent = 'Correct!'
+        score += 100
+    } else if (userChoices.length === easyPatArr.length && match === false) { 
+        screenText.textContent = "That's not what I said!"
+    } else {
+        setTimeout(displayResult, 500) // run until true
+}
+}
+
+
 // ** Creating Function to run Easy Pattern
 
 let playEasyPattern = () => {
@@ -244,11 +253,6 @@ let playEasyPattern = () => {
     setTimeout(function () { padTap(easyPatArr[1]); }, 1000)
     setTimeout(function () { padTap(easyPatArr[2]); }, 1500)
 }
-
-
-
-
-
 
 
 // ! *************************** Game Initialization Begins ******************************
@@ -294,13 +298,15 @@ const easyRound = () => {
     playEasyPattern()
     setTimeout(showYourTurn, 2000)
     checkAnswer()
+    displayResult()
+
 }
 
 const playEasyRound = () => {
     easyRound()
 }
 
-
+console.log(score)
 const startBtn = document.querySelector('#start')
 startBtn.addEventListener('click', playEasyRound)
 
