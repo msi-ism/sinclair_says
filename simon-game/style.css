@@ -240,7 +240,7 @@ h1{
 
 .nav > .volume {
     padding-top: 25px;
-    height: 1fr;
+    height: auto;
     grid-row-start: 1;
     
 }
@@ -258,22 +258,21 @@ h1{
 .nav > .replay {
     grid-row-start: 2;
     grid-column-start: 1;
-    height: 1fr;
+    height: auto;
 }
 
 .nav > .score {
     grid-row-start: 3;
     grid-column-start: 1;
-    height: 1fr;
-    text-align: center;
-    justify-content: center;
+    height: auto;
+
 }
 .score > .score-box {
     border: 3px solid black;
-    height: 125px;
-    width: 125px;
-    margin-top: 15px;
-    margin-left: 17%;
+    height: 100px;
+    width: 150px;
+    margin-left: 10%;
+    margin-top: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -284,13 +283,13 @@ h1{
 .nav > .difficulty {
     grid-row-start: 4;
     grid-column-start: 1;
-    height: 1fr;
+    height: auto;
 }
 .nav > .start-game {
     padding-top: 25px;
     grid-row-start: 5;
     grid-column-start: 1;
-    height: 1fr;
+    height: auto;
 }
 .start-btn {
     margin-top: 10%;
