@@ -181,33 +181,44 @@ padArr.forEach(pad => { pad.addEventListener('click', recordUserInput(pad)) })
 let easyPatArr = []
 let midPatArr = []
 let hardPatArr = []
+let randPatArr = []
 
 
-const getEasyPat = () => {
-    for (let i = 0; i < 3; i++) {
+
+const getRandPat = (num) => {
+    for (let i = 0; i < num; i++) {
         let randomPad = Math.floor(Math.random() * padArr.length)
-        easyPatArr.push(padObjArr[randomPad]['selectorVar'])
+        randPatArr.push(padObjArr[randomPad]['selectorVar'])
     }
 }
-console.log(easyPatArr)
 
-const getMidPat = () => {
-    for (let i = 0; i < 6; i++) {
-        let randomPad = Math.floor(Math.random() * padArr.length)
-        midPatArr.push(padObjArr[randomPad]['selectorVar'])
-    }
-}
-getMidPat()
-console.log(midPatArr)
 
-const getHardPat = () => {
-    for (let i = 0; i < 9; i++) {
-        let randomPad = Math.floor(Math.random() * padArr.length)
-        hardPatArr.push(padObjArr[randomPad]['selectorVar'])
-    }
-}
-getHardPat()
-console.log(hardPatArr)
+
+
+// const getEasyPat = () => {
+//     for (let i = 0; i < 3; i++) {
+//         let randomPad = Math.floor(Math.random() * padArr.length)
+//         easyPatArr.push(padObjArr[randomPad]['selectorVar'])
+//     }
+// }
+console.log(randPatArr)
+
+// const getMidPat = () => {
+//     for (let i = 0; i < 6; i++) {
+//         let randomPad = Math.floor(Math.random() * padArr.length)
+//         midPatArr.push(padObjArr[randomPad]['selectorVar'])
+//     }
+// }
+
+// console.log(midPatArr)
+
+// const getHardPat = () => {
+//     for (let i = 0; i < 9; i++) {
+//         let randomPad = Math.floor(Math.random() * padArr.length)
+//         hardPatArr.push(padObjArr[randomPad]['selectorVar'])
+//     }
+// }
+// console.log(hardPatArr)
 
 
 
@@ -219,11 +230,11 @@ let score = 0
 let match = false
 const checkAnswer = () => {
 
-    if (userChoices.length === easyPatArr.length) {
-        for (let i = 0; i < easyPatArr.length; i++) {
-            console.log(easyPatArr[i])
+    if (userChoices.length === randPatArr.length) {
+        for (let i = 0; i < randPatArr.length; i++) {
+            console.log(randPatArr[i])
             console.log(userChoices[i])
-            if (userChoices[i] !== easyPatArr[i]) {
+            if (userChoices[i] !== randPatArr[i]) {
                 console.log('false')
                 return match = false
             }
@@ -235,10 +246,10 @@ const checkAnswer = () => {
 }
 
 const displayResult = () =>{
-    if (userChoices.length === easyPatArr.length && match === true) {
+    if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
         score += 100
-    } else if (userChoices.length === easyPatArr.length && match === false) { 
+    } else if (userChoices.length === randPatArr.length && match === false) { 
         screenText.textContent = "That's not what I said!"
     } else {
         setTimeout(displayResult, 500) // run until true
@@ -248,11 +259,30 @@ const displayResult = () =>{
 
 // ** Creating Function to run Easy Pattern
 
-let playEasyPattern = () => {
-    setTimeout(function () { padTap(easyPatArr[0]); }, 500)
-    setTimeout(function () { padTap(easyPatArr[1]); }, 1000)
-    setTimeout(function () { padTap(easyPatArr[2]); }, 1500)
+let playRand3Pattern = () => {
+    setTimeout(function () { padTap(randPatArr[0]); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
 }
+
+let playRand5Pattern = () => {
+    setTimeout(function () { padTap(randPatArr[0]); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
+    setTimeout(function () { padTap(randPatArr[3]); }, 2000)
+    setTimeout(function () { padTap(randPatArr[4]); }, 2500)
+}
+
+let playRand7Pattern = () => {
+    setTimeout(function () { padTap(randPatArr[0]); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
+    setTimeout(function () { padTap(randPatArr[3]); }, 2000)
+    setTimeout(function () { padTap(randPatArr[4]); }, 2500)
+    setTimeout(function () { padTap(randPatArr[3]); }, 3000)
+    setTimeout(function () { padTap(randPatArr[4]); }, 3500)
+}
+
 
 
 // ! *************************** Game Initialization Begins ******************************
@@ -282,33 +312,66 @@ const padTap = (pad) => {
 
 }
 
+const wipeDisplay = () => {
+    screenText.textContent = ''
+}
 
 
-// var inputFlag = false
-// if (easyPatArr.length === userChoices.length) {
-//     inputFlag = true
-// }
+
+const resetDisplay = () => {
+    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        userChoices = []
+        randPatArr = []
+    } else {
+        setTimeout(resetDisplay, 500)
+    }
+}
+
 
 // ** Creating Round 1 - Easy
 
 
 
 const easyRound = () => {
-    getEasyPat()
-    playEasyPattern()
+    getRandPat(3)
+    playRand3Pattern()
     setTimeout(showYourTurn, 2000)
     checkAnswer()
     displayResult()
+    resetDisplay()
 
 }
 
-const playEasyRound = () => {
+const midRound = () => {
+    getRandPat(5)
+    playRand5Pattern()
+    setTimeout(showYourTurn, 3000)
+    checkAnswer()
+    displayResult()
+    resetDisplay()
+
+}
+
+const hardRound = () => {
+    getRandPat(7)
+    playRand7Pattern()
+    setTimeout(showYourTurn, 5000)
+    checkAnswer()
+    displayResult()
+    
+
+}
+
+
+const playGame = () => {
     easyRound()
 }
 
 console.log(score)
 const startBtn = document.querySelector('#start')
-startBtn.addEventListener('click', playEasyRound)
+startBtn.addEventListener('click', playGame)
 
 const checkBtn = document.querySelector('#check')
 checkBtn.addEventListener('click', checkAnswer)
