@@ -226,6 +226,8 @@ console.log(randPatArr)
 // ** Creating Function to Check User Input against Pattern
 
 let score = 0
+const scoreDisplay = document.getElementById('scorebox')
+scoreDisplay.textContent = score
 
 let match = false
 const checkAnswer = () => {
@@ -245,16 +247,17 @@ const checkAnswer = () => {
     return match = true
 }
 
-const displayResult = () =>{
+const displayResult = () => {
     if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
         blinkTwiceQuick()
         score += 100
-    } else if (userChoices.length === randPatArr.length && match === false) { 
+        scoreDisplay.textContent = score
+    } else if (userChoices.length === randPatArr.length && match === false) {
         screenText.textContent = "That's not what I said!"
     } else {
         setTimeout(displayResult, 500) // run until true
-}
+    }
 }
 
 
@@ -335,6 +338,10 @@ const resetDisplay = () => {
     }
 }
 
+const nextRound = () => {
+    resetDisplay()
+    easyRound()
+}
 
 // ** Creating Round 1 - Easy
 
@@ -347,7 +354,7 @@ const easyRound = () => {
     checkAnswer()
     displayResult()
     resetDisplay()
-
+    
 }
 
 const midRound = () => {
@@ -366,16 +373,19 @@ const hardRound = () => {
     setTimeout(showYourTurn, 5000)
     checkAnswer()
     displayResult()
-    
+
 
 }
 
 
 const playGame = () => {
     easyRound()
+    setInterval(easyRound, 8000)
 }
 
+
 console.log(score)
+
 const startBtn = document.querySelector('#start')
 startBtn.addEventListener('click', playGame)
 
