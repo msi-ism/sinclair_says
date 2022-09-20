@@ -45,29 +45,29 @@ const lightEmUp = () => {
 // ** Function to UnLight all pads at runtime
 const lightEmDown = () => {
     setTimeout(function () { offPad(pad1); }, 1500)
-    setTimeout(function () { offPad(pad2); }, 1500)
-    setTimeout(function () { offPad(pad3); }, 1500)
-    setTimeout(function () { offPad(pad4); }, 1500)
-    setTimeout(function () { offPad(pad5); }, 1500)
-    setTimeout(function () { offPad(pad6); }, 1500)
-    setTimeout(function () { offPad(pad7); }, 1500)
-    setTimeout(function () { offPad(pad8); }, 1500)
-    setTimeout(function () { offPad(pad9); }, 1500)
+    setTimeout(function () { offPad(pad2); }, 1650)
+    setTimeout(function () { offPad(pad3); }, 1800)
+    setTimeout(function () { offPad(pad4); }, 1950)
+    setTimeout(function () { offPad(pad5); }, 2100)
+    setTimeout(function () { offPad(pad6); }, 2350)
+    setTimeout(function () { offPad(pad7); }, 2500)
+    setTimeout(function () { offPad(pad8); }, 2650)
+    setTimeout(function () { offPad(pad9); }, 2800)
 
 }
 
 
 //** Creating function to blink all lights */
 const blinkAll = () => {
-    setTimeout(function () { lightPad(pad1); }, 150)
-    setTimeout(function () { lightPad(pad2); }, 150)
-    setTimeout(function () { lightPad(pad3); }, 150)
-    setTimeout(function () { lightPad(pad4); }, 150)
-    setTimeout(function () { lightPad(pad5); }, 150)
-    setTimeout(function () { lightPad(pad6); }, 150)
-    setTimeout(function () { lightPad(pad7); }, 150)
-    setTimeout(function () { lightPad(pad8); }, 150)
-    setTimeout(function () { lightPad(pad9); }, 150)
+    setTimeout(function () { lightPad(pad1); }, 100)
+    setTimeout(function () { lightPad(pad2); }, 100)
+    setTimeout(function () { lightPad(pad3); }, 100)
+    setTimeout(function () { lightPad(pad4); }, 100)
+    setTimeout(function () { lightPad(pad5); }, 100)
+    setTimeout(function () { lightPad(pad6); }, 100)
+    setTimeout(function () { lightPad(pad7); }, 100)
+    setTimeout(function () { lightPad(pad8); }, 100)
+    setTimeout(function () { lightPad(pad9); }, 100)
     setTimeout(function () { offPad(pad1); }, 250)
     setTimeout(function () { offPad(pad2); }, 250)
     setTimeout(function () { offPad(pad3); }, 250)
@@ -248,6 +248,7 @@ const checkAnswer = () => {
 const displayResult = () =>{
     if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
+        blinkTwiceQuick()
         score += 100
     } else if (userChoices.length === randPatArr.length && match === false) { 
         screenText.textContent = "That's not what I said!"
@@ -300,11 +301,16 @@ const startUpLights = () => {
 startUpLights()
 
 const blinkTwiceStart = () => {
-    setTimeout(blinkAll, 1500)
-    setTimeout(blinkAll, 1750)
+    setTimeout(blinkAll, 4000)
+    setTimeout(blinkAll, 4250)
 }
 
 blinkTwiceStart()
+
+const blinkTwiceQuick = () => {
+    setTimeout(blinkAll, 300)
+    setTimeout(blinkAll, 500)
+}
 
 const padTap = (pad) => {
     pad.style.boxShadow = padLight
