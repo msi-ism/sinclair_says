@@ -85,32 +85,44 @@ const blinkAll = () => {
 let screenText = document.querySelector('.screen-text')
 let displayText = screenText.textContent
 let splitText = Array.from(displayText)
+let yourTurnText = 'Your turn...'
+let winnerText = 'Winner!'
+let loser = 'Loser'
 console.log(displayText.length)
 
 screenText.textContent = ''
 
-for (let i = 0; i < splitText.length; i++) {
-    screenText.innerHTML += `<span>${splitText[i]}</span>`
-}
-console.log(screenText)
+const animateScreen = () => {
 
-const onTick = () => {
-    const span = screenText.querySelectorAll("span")[char]
-    span.classList.add('fade')
-    char++
-    if (char === splitText.length) {
-        complete()
-        return
+    for (let i = 0; i < splitText.length; i++) {
+        screenText.innerHTML += `<span>${splitText[i]}</span>`
+    }
+    console.log(screenText)
+
+    const onTick = () => {
+        const span = screenText.querySelectorAll("span")[char]
+        span.classList.add('fade')
+        char++
+        if (char === splitText.length) {
+            complete()
+            return
+        }
+    }
+
+    let char = 0
+    let timer = setInterval(onTick, 50)
+
+    const complete = () => {
+        clearInterval(timer)
+        timer = null;
     }
 }
 
-let char = 0
-let timer = setInterval(onTick, 50)
-
-const complete = () => {
-    clearInterval(timer)
-    timer = null;
+const showYourTurn = () => {
+    screenText.textContent = 'Your turn...'
 }
+
+
 
 
 // ** Begins Function Objects
@@ -202,42 +214,49 @@ console.log(hardPatArr)
 
 // ** Creating Function to Check User Input against Pattern
 
+let score = 0
 const checkAnswer = () => {
-    for (let i = 0; i < easyPatArr.length; i++) {
-        console.log(easyPatArr[i])
-        console.log(userChoices[i])
-        if (userChoices[i] === easyPatArr[i]) {
-            result = true
-            
-        } else {
-            console.log("Not a match")
-            result = false
-        }
-    }
-    console.log(result)
-}
+    if (userChoices.length === easyPatArr.length) {
+        for (let i = 0; i < easyPatArr.length; i++) {
+            console.log(easyPatArr[i])
+            console.log(userChoices[i])
+            if (userChoices[i] === easyPatArr[i]) {
+                result = true
+                screenText.textContent = 'Correct!'
+                score += 100
+                console.log(`The score is ${score}`)
 
+            } else {
+                result = false
+                screenText.textContent = "That's not what I said!"
+                score += 0
+            }
+        }
+        console.log(result)
+    } else {
+        setTimeout(checkAnswer, 500)
+    }
+}
 // ** Creating Function to run Easy Pattern
 
 let playEasyPattern = () => {
     setTimeout(function () { padTap(easyPatArr[0]); }, 500)
     setTimeout(function () { padTap(easyPatArr[1]); }, 1000)
     setTimeout(function () { padTap(easyPatArr[2]); }, 1500)
-    setTimeout(function () { padTap(easyPatArr[3]); }, 2000)
-    setTimeout(function () { padTap(easyPatArr[4]); }, 2500)
-
 }
 
-const startBtn = document.querySelector('#start')
-startBtn.addEventListener('click', playEasyPattern)
 
-const checkBtn = document.querySelector('#check')
-checkBtn.addEventListener('click', checkAnswer)
+
+
+
+
 
 // ! *************************** Game Initialization Begins ******************************
 
 
-// ** Calling StartupLights & blinkTwice to Initialize Game
+// ** Calling animateScreen, StartupLights & blinkTwice to Initialize Game
+
+animateScreen()
 
 const startUpLights = () => {
     lightEmUp()
@@ -261,15 +280,32 @@ const padTap = (pad) => {
 
 
 
+// var inputFlag = false
+// if (easyPatArr.length === userChoices.length) {
+//     inputFlag = true
+// }
+
 // ** Creating Round 1 - Easy
 
+
+
+const easyRound = () => {
+    getEasyPat()
+    playEasyPattern()
+    setTimeout(showYourTurn, 2000)
+    checkAnswer()
+}
+
 const playEasyRound = () => {
-    
+    easyRound()
 }
 
 
+const startBtn = document.querySelector('#start')
+startBtn.addEventListener('click', playEasyRound)
 
-
+const checkBtn = document.querySelector('#check')
+checkBtn.addEventListener('click', checkAnswer)
 
 
 // Need replay function
