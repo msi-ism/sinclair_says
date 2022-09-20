@@ -1,5 +1,7 @@
 console.log('script is running...')
 
+// ! Declaring various variables & functions for game
+
 // ** Grabbing Pad Elements
 let pad1 = document.getElementById('pad1')
 let pad2 = document.getElementById('pad2')
@@ -57,24 +59,24 @@ const lightEmDown = () => {
 
 //** Creating function to blink all lights */
 const blinkAll = () => {
-    setTimeout(function () { lightPad(pad1); }, 100)
-    setTimeout(function () { lightPad(pad2); }, 100)
-    setTimeout(function () { lightPad(pad3); }, 100)
-    setTimeout(function () { lightPad(pad4); }, 100)
-    setTimeout(function () { lightPad(pad5); }, 100)
-    setTimeout(function () { lightPad(pad6); }, 100)
-    setTimeout(function () { lightPad(pad7); }, 100)
-    setTimeout(function () { lightPad(pad8); }, 100)
-    setTimeout(function () { lightPad(pad9); }, 100)
-    setTimeout(function () { offPad(pad1); }, 200)
-    setTimeout(function () { offPad(pad2); }, 200)
-    setTimeout(function () { offPad(pad3); }, 200)
-    setTimeout(function () { offPad(pad4); }, 200)
-    setTimeout(function () { offPad(pad5); }, 200)
-    setTimeout(function () { offPad(pad6); }, 200)
-    setTimeout(function () { offPad(pad7); }, 200)
-    setTimeout(function () { offPad(pad8); }, 200)
-    setTimeout(function () { offPad(pad9); }, 200)
+    setTimeout(function () { lightPad(pad1); }, 150)
+    setTimeout(function () { lightPad(pad2); }, 150)
+    setTimeout(function () { lightPad(pad3); }, 150)
+    setTimeout(function () { lightPad(pad4); }, 150)
+    setTimeout(function () { lightPad(pad5); }, 150)
+    setTimeout(function () { lightPad(pad6); }, 150)
+    setTimeout(function () { lightPad(pad7); }, 150)
+    setTimeout(function () { lightPad(pad8); }, 150)
+    setTimeout(function () { lightPad(pad9); }, 150)
+    setTimeout(function () { offPad(pad1); }, 250)
+    setTimeout(function () { offPad(pad2); }, 250)
+    setTimeout(function () { offPad(pad3); }, 250)
+    setTimeout(function () { offPad(pad4); }, 250)
+    setTimeout(function () { offPad(pad5); }, 250)
+    setTimeout(function () { offPad(pad6); }, 250)
+    setTimeout(function () { offPad(pad7); }, 250)
+    setTimeout(function () { offPad(pad8); }, 250)
+    setTimeout(function () { offPad(pad9); }, 250)
 }
 
 // ** Text Animation Function
@@ -138,37 +140,11 @@ const padObjArr = [padObj1, padObj2, padObj3, padObj4, padObj5, padObj6, padObj7
 
 console.log(padObjArr[2]['selectorVar'])
 
-
-
-// ** Calling StartupLights & blinkTwice to Initialize Game
-
-const startUpLights = () => {
-    lightEmUp()
-    setTimeout(lightEmDown, 1000)
-
-}
-startUpLights()
-
-const blinkTwice = () => {
-    setTimeout(blinkAll, 1500)
-    setTimeout(blinkAll, 1750)
-}
-
-blinkTwice()
-
-const padTap = (pad) => {
-    pad.style.boxShadow = padLight
-    setTimeout(function () { offPad(pad); }, 250)
-
-}
-
-
 // ** Adds Tap Lighting Effect to Individual Pads
 padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
 
-
-// ** Game Logic Begins **
+// ! ************************** Game Logic Begins ***************************************
 
 
 // ** Creating Function to Listen for User Input and Record to Array
@@ -183,8 +159,6 @@ const recordUserInput = (pad) => {
     console.log(userChoices)
 }
 
-
-
 // ** Creating Event Listeners For Each Pad to add to userChoices Array
 padArr.forEach(pad => { pad.addEventListener('click', recordUserInput(pad)) })
 
@@ -193,17 +167,38 @@ padArr.forEach(pad => { pad.addEventListener('click', recordUserInput(pad)) })
 // ** Creating Level 1 Pattern
 // let easyPatArr = [pad1, pad2, pad3, pad4, pad5]
 let easyPatArr = []
+let midPatArr = []
+let hardPatArr = []
 
 
 const getEasyPat = () => {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
         let randomPad = Math.floor(Math.random() * padArr.length)
         easyPatArr.push(padObjArr[randomPad]['selectorVar'])
     }
 }
-getEasyPat()
-
 console.log(easyPatArr)
+
+const getMidPat = () => {
+    for (let i = 0; i < 6; i++) {
+        let randomPad = Math.floor(Math.random() * padArr.length)
+        midPatArr.push(padObjArr[randomPad]['selectorVar'])
+    }
+}
+getMidPat()
+console.log(midPatArr)
+
+const getHardPat = () => {
+    for (let i = 0; i < 9; i++) {
+        let randomPad = Math.floor(Math.random() * padArr.length)
+        hardPatArr.push(padObjArr[randomPad]['selectorVar'])
+    }
+}
+getHardPat()
+console.log(hardPatArr)
+
+
+
 
 // ** Creating Function to Check User Input against Pattern
 
@@ -238,6 +233,42 @@ startBtn.addEventListener('click', playEasyPattern)
 
 const checkBtn = document.querySelector('#check')
 checkBtn.addEventListener('click', checkAnswer)
+
+// ! *************************** Game Initialization Begins ******************************
+
+
+// ** Calling StartupLights & blinkTwice to Initialize Game
+
+const startUpLights = () => {
+    lightEmUp()
+    setTimeout(lightEmDown, 1000)
+
+}
+startUpLights()
+
+const blinkTwiceStart = () => {
+    setTimeout(blinkAll, 1500)
+    setTimeout(blinkAll, 1750)
+}
+
+blinkTwiceStart()
+
+const padTap = (pad) => {
+    pad.style.boxShadow = padLight
+    setTimeout(function () { offPad(pad); }, 250)
+
+}
+
+
+
+// ** Creating Round 1 - Easy
+
+const playEasyRound = () => {
+    
+}
+
+
+
 
 
 
