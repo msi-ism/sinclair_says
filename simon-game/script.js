@@ -231,6 +231,12 @@ const autoAudio = (obj) => {
 padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
 
 // ^ Create Variable for incorrect answer audio
+let rightAudio = new Audio(`audio/all-good.mp3`)
+
+let playCorrectAudio = () => {
+    rightAudio.play()
+}
+
 let wrongAudio = new Audio(`audio/all_pads.mp3`)
 
 
@@ -365,6 +371,7 @@ const resetDisplayEasy = () => {
         setTimeout(animateScreen, 1750)
         setTimeout(easyRound, 3000)
         blinkTwiceQuick()
+        setTimeout(playCorrectAudio, 100)
         userChoices = []
         randPatArr = []
     } else if (screenText.textContent === "That's not what I said!") {
@@ -467,6 +474,9 @@ const easyRound = () => {
         startUpLights()
         setTimeout(blinkAll, 4000)
         setTimeout(blinkTwiceQuick, 4500)
+        setTimeout(playCorrectAudio, 200)
+        setTimeout(playCorrectAudio, 1200)
+        setTimeout(playCorrectAudio, 2200)
     } else {
         screenText.textContent = 'Game Over!'
     }
