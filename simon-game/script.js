@@ -109,19 +109,6 @@ const blinkAllRed = () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ** Text Animation Function
 
 
@@ -215,23 +202,34 @@ const padObjArr = [padObj1, padObj2, padObj3, padObj4, padObj5, padObj6, padObj7
 // ** Adds Tap Lighting Effect to Individual Pads
 padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
-// ** Adds Tap Audio Play to Individual Pads
-// padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
 
-const playAudio = () => {
-    let  audio = document.getElementById('pad1-audio')
+
+
+const tapAudio = (pad) => {
+    let  audio = document.getElementById(`${pad.id}-audio`)
     audio.play()
 }
 
-pad1.addEventListener('click', playAudio)
 
-
-const test = (obj) => {
+const autoAudio = (obj) => {
     obj.playPad()
 }
 
-test(padObj1)
+
+const myEvent = new Event('myevent', {
+    bubbles: true,
+    cancelable: true,
+    composed: false
+})
+
+
+
+// ** Adds Tap Audio Play to Individual Pads
+
+padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
+
+
 // ! ************************** Game Logic Begins ***************************************
 
 
@@ -264,7 +262,7 @@ let randPatArr = []
 const getRandPat = (num) => {
     for (let i = 0; i < num; i++) {
         let randomPad = Math.floor(Math.random() * padArr.length)
-        randPatArr.push(padObjArr[randomPad]['selectorVar'])
+        randPatArr.push(padObjArr[randomPad])
     }
 }
 
@@ -289,7 +287,7 @@ const checkAnswer = () => {
         for (let i = 0; i < randPatArr.length; i++) {
             console.log(randPatArr[i])
             console.log(userChoices[i])
-            if (userChoices[i] !== randPatArr[i]) {
+            if (userChoices[i] !== randPatArr[i]['selectorVar']) {
                 console.log('false')
                 return match = false
             }
@@ -319,27 +317,27 @@ const displayResult = () => {
 // ** Creating Function to run Easy Pattern
 
 let playRand3Pattern = () => {
-    setTimeout(function () { padTap(randPatArr[0]); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
+    setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
 }
 
 let playRand5Pattern = () => {
-    setTimeout(function () { padTap(randPatArr[0]); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
-    setTimeout(function () { padTap(randPatArr[3]); }, 2000)
-    setTimeout(function () { padTap(randPatArr[4]); }, 2500)
+    setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
+    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2000)
+    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 2500)
 }
 
 let playRand7Pattern = () => {
-    setTimeout(function () { padTap(randPatArr[0]); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]); }, 1500)
-    setTimeout(function () { padTap(randPatArr[3]); }, 2000)
-    setTimeout(function () { padTap(randPatArr[4]); }, 2500)
-    setTimeout(function () { padTap(randPatArr[3]); }, 3000)
-    setTimeout(function () { padTap(randPatArr[4]); }, 3500)
+    setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
+    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2000)
+    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 2500)
+    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 3000)
+    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 3500)
 }
 
 
@@ -464,7 +462,7 @@ const easyRound = () => {
         displayResult()
         resetDisplayEasy()
     } else if (score >= 300 && lives > 0) {
-        screenText.textContent = 'Winner!'
+        screenText.textContent = 'You Win!!'
         startUpLights()
         setTimeout(blinkAll, 4000)
         setTimeout(blinkTwiceQuick, 4500)
@@ -482,7 +480,7 @@ const medRound = () => {
         displayResult()
         resetDisplayMed()
     } else if (score >= 500 && lives > 0) {
-        screenText.textContent = 'Winner!'
+        screenText.textContent = 'You Win!!'
     } else {
         screenText.textContent = 'Game Over!'
     }
@@ -498,11 +496,10 @@ const hardRound = () => {
         displayResult()
         resetDisplayHard()
     } else if (score >= 500 && lives > 0) {
-        screenText.textContent = 'Winner!'
+        screenText.textContent = 'You Win!!'
     } else {
         screenText.textContent = 'Game Over!'
     }
-
 
 }
 
