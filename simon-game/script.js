@@ -1,10 +1,9 @@
 console.log('script is running...')
+// ****************** Declaring various variables & functions to setup game *********************
 
-let defaultDomState = document.body.innerHTML;
+// & Pad Setup
 
-// ! Declaring various variables & functions for game
-
-// ** Grabbing Pad Elements
+// ^ Grabbing Pad Elements
 let pad1 = document.getElementById('pad1')
 let pad2 = document.getElementById('pad2')
 let pad3 = document.getElementById('pad3')
@@ -15,27 +14,30 @@ let pad7 = document.getElementById('pad7')
 let pad8 = document.getElementById('pad8')
 let pad9 = document.getElementById('pad9')
 
-// ** Pad Array Global Variable
+// ^ Creating Pad Array Global Variable with an array of HTML elements
 const padArr = [pad1, pad2, pad3, pad4, pad5, pad6, pad7, pad8, pad9]
 
-// ** Pad Light On & Off Variable
+
+// & Pad Lighting Effects
+
+// ^ Pad Light On & Off Box Shadow Variable
 let padLight = '0px 0px 40px 20px rgba(253, 245, 232, 0.8), inset 0 0 25px 25px rgba(253, 245, 232, 0.3)'
 let redLight = '0px 0px 40px 20px rgba(253, 35, 33, 0.8), inset 0 0 25px 25px rgba(253, 43, 32, 0.3)'
 let lightOff = ''
 
-// ** Function to Light Individual Pads
+// ^ Function to Light Individual Pads
 const lightPad = (pad) => {
     pad.style.boxShadow = padLight
 }
-
+// ^ Function to Light Individual Pads Red
 const lightRedPad = (pad) => {
     pad.style.boxShadow = redLight
 }
-// ** Function to UnLight Individual Pads
+// ^ Function to UnLight Individual Pads
 const offPad = (pad) => {
     pad.style.boxShadow = lightOff
 }
-// ** Function to Light all pads at runtime
+// ^ Function to Light all pads at runtime
 
 const lightEmUp = () => {
     setTimeout(function () { lightPad(pad1); }, 250)
@@ -48,8 +50,7 @@ const lightEmUp = () => {
     setTimeout(function () { lightPad(pad8); }, 1300)
     setTimeout(function () { lightPad(pad9); }, 1450)
 }
-
-// ** Function to UnLight all pads at runtime
+// ^ Function to UnLight all pads at runtime
 const lightEmDown = () => {
     setTimeout(function () { offPad(pad1); }, 1500)
     setTimeout(function () { offPad(pad2); }, 1650)
@@ -63,8 +64,7 @@ const lightEmDown = () => {
 
 }
 
-
-//** Creating function to blink all lights */
+// ^ Creating function to blink all lights */
 const blinkAll = () => {
     setTimeout(function () { lightPad(pad1); }, 100)
     setTimeout(function () { lightPad(pad2); }, 100)
@@ -85,7 +85,7 @@ const blinkAll = () => {
     setTimeout(function () { offPad(pad8); }, 250)
     setTimeout(function () { offPad(pad9); }, 250)
 }
-//** Creating function to blink all lights red */
+// ^ Creating function to blink all lights red */
 
 const blinkAllRed = () => {
     setTimeout(function () { lightRedPad(pad1); }, 100)
@@ -108,24 +108,53 @@ const blinkAllRed = () => {
     setTimeout(function () { offPad(pad9); }, 250)
 }
 
+// ^ Adds Tap Lighting Effect to Individual Pads Using For Each
+padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
+// ^ Function that plays start up lights on initialization
+const startUpLights = () => {
+    lightEmUp()
+    setTimeout(lightEmDown, 1000)
 
+}
+// ^ Function that plays blinks all lights twice
+const blinkTwiceStart = () => {
+    setTimeout(blinkAll, 4000)
+    setTimeout(blinkAll, 4250)
+}
 
-// ** Text Animation Function
+// ^ Function that plays blinks all lights twice quickly
+const blinkTwiceQuick = () => {
+    setTimeout(blinkAll, 300)
+    setTimeout(blinkAll, 500)
+}
+// ^ Function that plays blinks all lights 3x slowly
+const blinkThriceSlow = () => {
+    setTimeout(blinkAll, 0)
+    setTimeout(blinkAll, 750)
+    setTimeout(blinkAll, 1500)
+}
+// ^ Function that plays blinks RED quickly
+const blinkTwiceRed = () => {
+    setTimeout(blinkAllRed, 300)
+    setTimeout(blinkAllRed, 500)
+}
+// ^ Function that lights pad when clicked by user
+const padTap = (pad) => {
+    pad.style.boxShadow = padLight
+    setTimeout(function () { offPad(pad); }, 250)
+}
 
+// & Screen Text Animation Function
 
+// ^ Setting up variables needed
 let screenText = document.querySelector('.screen-text')
 let displayText = screenText.textContent
 let splitText = Array.from(displayText)
-let yourTurnText = 'Your turn...'
-let winnerText = 'Winner!'
-let loser = 'Loser'
-console.log(displayText.length)
-
 screenText.textContent = ''
 
+// ^ Function that animates screen by splitting, looping, print within span and styling that span
 const animateScreen = () => {
-
     for (let i = 0; i < splitText.length; i++) {
         screenText.innerHTML += `<span>${splitText[i]}</span>`
     }
@@ -140,7 +169,6 @@ const animateScreen = () => {
             return
         }
     }
-
     let char = 0
     let timer = setInterval(onTick, 50)
 
@@ -155,10 +183,9 @@ const showYourTurn = () => {
 }
 
 
+// & Creating Function Objects and Methods
 
-
-// ** Begins Function Objects
-
+// ^ Creating 'Pad' class with constructor
 class Pad {
     constructor(name, color, tone, selectorVar, audioSrc) {
         this.name = name
@@ -175,8 +202,7 @@ class Pad {
     }
 }
 
-
-
+// ^ Declaring Pad Object variables
 const padObj1 = new Pad('pad-1', '#E8ECFB', 'A#', pad1, 'audio/pad1.mp3')
 const padObj2 = new Pad('pad-2', '#B997C7', 'B#', pad2, 'audio/pad2.mp3')
 const padObj3 = new Pad('pad-3', '#824D99', 'C#', pad3, 'audio/pad3.mp3')
@@ -187,55 +213,34 @@ const padObj7 = new Pad('pad-7', '#CD2120', 'G#', pad7, 'audio/pad7.mp3')
 const padObj8 = new Pad('pad-8', 'E57F33', 'A#', pad8, 'audio/pad8.mp3')
 const padObj9 = new Pad('pad-9', '#D0B541', 'B#', pad9, 'audio/pad9.mp3')
 
-
-// const padObj1 = new Pad('pad-1', '#E8ECFB', 'A#', pad1, 'audio/pad2.mp3')
-// const padObj2 = new Pad('pad-2', '#B997C7', 'B#', pad2, 'audio/pad2.mp3')
-// const padObj3 = new Pad('pad-3', '#824D99', 'C#', pad3, 'audio/pad3.mp3')
-// const padObj4 = new Pad('pad-4', '#4D78C3', 'D#', pad4, 'audio/pad4.mp3')
-// const padObj5 = new Pad('pad-5', '#56A2AC', 'E#', pad5, 'audio/pad5.mp3')
-// const padObj6 = new Pad('pad-6', '#7EB775', 'F#', pad6, 'audio/pad6.mp3')
-// const padObj7 = new Pad('pad-7', '#CD2120', 'G#', pad7, 'audio/pad7.mp3')
-// const padObj8 = new Pad('pad-8', 'E57F33', 'A#', pad8, 'audio/pad8.mp3')
-// const padObj9 = new Pad('pad-9', '#D0B541', 'B#', pad9, 'audio/pad9.mp3')
-
+// ^ Placing Pad Objects in array for future use
 const padObjArr = [padObj1, padObj2, padObj3, padObj4, padObj5, padObj6, padObj7, padObj8, padObj9]
 
+// & Begins Audio Effects
 
-// ** Adds Tap Lighting Effect to Individual Pads
-padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
-
-
-
-
-
+// ^ Function created to play pad sound when user clicks on pad 
 const tapAudio = (pad) => {
     let audio = document.getElementById(`${pad.id}-audio`)
     audio.play()
 }
 
-
+// ^ Function created to play pad sound automatically - created to play sound during pattern playback
 const autoAudio = (obj) => {
     obj.playPad()
 }
 
-
-const myEvent = new Event('myevent', {
-    bubbles: true,
-    cancelable: true,
-    composed: false
-})
-
-
-
-// ** Adds Tap Audio Play to Individual Pads
-
+// ^ For each to add the tapAudio function to each pad
 padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
 
 
-// ! ************************** Game Logic Begins ***************************************
+
+// **************************** Game Logic Begins ***************************************
 
 
-// ** Creating Function to Listen for User Input and Record to Array
+// & Begins game setup variables
+
+
+// ^ Creating Function to Listen for User Input and Record to Array called User Choices
 
 let userChoices = []
 const recordUserInput = (pad) => {
@@ -247,29 +252,21 @@ const recordUserInput = (pad) => {
     console.log(userChoices)
 }
 
-// ** Creating Event Listeners For Each Pad to add to userChoices Array
+// ^ Creating Event Listeners For Each Pad to add to userChoices Array
 padArr.forEach(pad => { pad.addEventListener('click', recordUserInput(pad)) })
 
 
 
-// ** Creating Level 1 Pattern
-// let easyPatArr = [pad1, pad2, pad3, pad4, pad5]
-let easyPatArr = []
-let midPatArr = []
-let hardPatArr = []
+// ^ Creating Empty Array to Hold Pattern that is generated
 let randPatArr = []
 
-
-
+// ^ Creating a Function that generates an array of Random pads with length determined by num passed
 const getRandPat = (num) => {
     for (let i = 0; i < num; i++) {
         let randomPad = Math.floor(Math.random() * padArr.length)
         randPatArr.push(padObjArr[randomPad])
     }
 }
-
-
-console.log(randPatArr)
 
 
 
@@ -360,42 +357,10 @@ let playRand7Pattern = () => {
 
 animateScreen()
 
-const startUpLights = () => {
-    lightEmUp()
-    setTimeout(lightEmDown, 1000)
 
-}
+
 startUpLights()
-
-const blinkTwiceStart = () => {
-    setTimeout(blinkAll, 4000)
-    setTimeout(blinkAll, 4250)
-}
-
 blinkTwiceStart()
-
-const blinkTwiceQuick = () => {
-    setTimeout(blinkAll, 300)
-    setTimeout(blinkAll, 500)
-}
-
-const blinkThriceSlow = () => {
-    setTimeout(blinkAll, 0)
-    setTimeout(blinkAll, 1000)
-    setTimeout(blinkAll, 2000)
-}
-
-const blinkTwiceRed = () => {
-    setTimeout(blinkAllRed, 300)
-    setTimeout(blinkAllRed, 500)
-}
-
-const padTap = (pad) => {
-    pad.style.boxShadow = padLight
-    setTimeout(function () { offPad(pad); }, 250)
-}
-
-console.log(pad1)
 
 const wipeDisplay = () => {
     screenText.textContent = ''

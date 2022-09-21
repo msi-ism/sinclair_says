@@ -8,8 +8,6 @@
 
 
 
-
-
 html {
     height: 100%;
     width: 100%;
@@ -17,8 +15,8 @@ html {
 
 body {
     /* display: flex;
-    justify-content: center;
-    background-color: lavender; */
+    justify-content: center;*/
+    background-color: blueviolet; 
     height: 100%;
     width: 100%;
     display: grid;
