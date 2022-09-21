@@ -226,6 +226,7 @@ console.log(randPatArr)
 // ** Creating Function to Check User Input against Pattern
 
 let score = 0
+let round = 0
 const scoreDisplay = document.getElementById('scorebox')
 scoreDisplay.textContent = score
 
@@ -252,6 +253,7 @@ const displayResult = () => {
         screenText.textContent = 'Correct!'
         blinkTwiceQuick()
         score += 100
+        round += 1
         scoreDisplay.textContent = score
     } else if (userChoices.length === randPatArr.length && match === false) {
         screenText.textContent = "That's not what I said!"
@@ -331,6 +333,8 @@ const resetDisplay = () => {
     if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
+        setTimeout(easyRound, 3000)
+        round = 0
         userChoices = []
         randPatArr = []
     } else {
@@ -346,15 +350,15 @@ const nextRound = () => {
 // ** Creating Round 1 - Easy
 
 
-
 const easyRound = () => {
-    getRandPat(3)
-    playRand3Pattern()
-    setTimeout(showYourTurn, 2000)
-    checkAnswer()
-    displayResult()
-    resetDisplay()
-    
+    if (score < 400) {
+        getRandPat(3)
+        playRand3Pattern()
+        setTimeout(showYourTurn, 2000)
+        checkAnswer()
+        displayResult()
+        resetDisplay()
+    }
 }
 
 const midRound = () => {
@@ -379,8 +383,9 @@ const hardRound = () => {
 
 
 const playGame = () => {
-    easyRound()
-    setInterval(easyRound, 8000)
+    easyRound(playGame)
+    console.log('First Execution')
+    // setInterval(easyRound, 8000)
 }
 
 
@@ -389,8 +394,8 @@ console.log(score)
 const startBtn = document.querySelector('#start')
 startBtn.addEventListener('click', playGame)
 
-const checkBtn = document.querySelector('#check')
-checkBtn.addEventListener('click', checkAnswer)
+// const checkBtn = document.querySelector('#check')
+// checkBtn.addEventListener('click', checkAnswer)
 
 
 // Need replay function
