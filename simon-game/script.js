@@ -232,6 +232,9 @@ const autoAudio = (obj) => {
 // ^ For each to add the tapAudio function to each pad
 padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
 
+// ^ Create Variable for incorrect answer audio
+let wrongAudio = new Audio(`audio/all_pads.mp3`)
+
 
 
 // **************************** Game Logic Begins ***************************************
@@ -256,7 +259,6 @@ const recordUserInput = (pad) => {
 padArr.forEach(pad => { pad.addEventListener('click', recordUserInput(pad)) })
 
 
-
 // ^ Creating Empty Array to Hold Pattern that is generated
 let randPatArr = []
 
@@ -268,9 +270,7 @@ const getRandPat = (num) => {
     }
 }
 
-
-
-// ** Creating Function to Check User Input against Pattern
+// ^ Declaring variables for Score and Lives
 
 let score = 0
 let lives = 3
@@ -279,9 +279,9 @@ const livesDisplay = document.getElementById('lives-box')
 scoreDisplay.textContent = score
 livesDisplay.textContent = lives
 
+// ^ Creating Function to Check User Input against Pattern
 let match = false
 const checkAnswer = () => {
-
     if (userChoices.length === randPatArr.length) {
         for (let i = 0; i < randPatArr.length; i++) {
             console.log(randPatArr[i])
@@ -297,7 +297,7 @@ const checkAnswer = () => {
     return match = true
 }
 
-
+// ^ Creating Function to Display result and tally score after answer has been checked
 const displayResult = () => {
     if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
@@ -314,8 +314,8 @@ const displayResult = () => {
 }
 
 
-// ** Creating Function to run Easy Pattern
-
+// ^ Creating Functions to run Patterns after selection
+// ^ 3
 let playRand3Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
     setTimeout(function () { autoAudio(randPatArr[0]); }, 500)
@@ -324,7 +324,7 @@ let playRand3Pattern = () => {
     setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 2000)
     setTimeout(function () { autoAudio(randPatArr[2]); }, 2000)
 }
-
+// ^ 5
 let playRand5Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
     setTimeout(function () { autoAudio(randPatArr[0]); }, 500)
@@ -337,39 +337,31 @@ let playRand5Pattern = () => {
     setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 3500)
     setTimeout(function () { autoAudio(randPatArr[4]); }, 3500)
 }
-
+// ^ 7
 let playRand7Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
+    setTimeout(function () { autoAudio(randPatArr[0]); }, 500)
     setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1250)
-    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1750)
-    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2000)
-    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 2500)
-    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 3000)
+    setTimeout(function () { autoAudio(randPatArr[1]); }, 1250)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 2000)
+    setTimeout(function () { autoAudio(randPatArr[2]); }, 2000)
+    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2750)
+    setTimeout(function () { autoAudio(randPatArr[3]); }, 2750)
     setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 3500)
+    setTimeout(function () { autoAudio(randPatArr[4]); }, 3500)
+    setTimeout(function () { padTap(randPatArr[5]['selectorVar']); }, 4250)
+    setTimeout(function () { autoAudio(randPatArr[5]); }, 4250)
+    setTimeout(function () { padTap(randPatArr[6]['selectorVar']); }, 5000)
+    setTimeout(function () { autoAudio(randPatArr[6]); }, 5000)
 }
 
 
-
-// ! *************************** Game Initialization Begins ******************************
-
-
-// ** Calling animateScreen, StartupLights & blinkTwice to Initialize Game
-
-animateScreen()
-
-
-
-startUpLights()
-blinkTwiceStart()
-
+// ^ Function to wipe display
 const wipeDisplay = () => {
     screenText.textContent = ''
 }
 
-let wrongAudio = new Audio(`audio/all_pads.mp3`)
-
-
-
+// ^ Function to reset display based on which difficulty is being played
 const resetDisplayEasy = () => {
     if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
@@ -390,7 +382,7 @@ const resetDisplayEasy = () => {
         setTimeout(resetDisplayEasy, 500)
     }
 }
-
+// ^ Reset Display Med
 const resetDisplayMed = () => {
     if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
@@ -410,6 +402,7 @@ const resetDisplayMed = () => {
         setTimeout(resetDisplayMed, 500)
     }
 }
+//^ Reset Display Hard
 const resetDisplayHard = () => {
     if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
@@ -430,16 +423,22 @@ const resetDisplayHard = () => {
     }
 }
 
+//  ************* Game Initialization Starts **************
+
+// & Begins calling Functions to Initialize Game
 
 
+// ^ Calling animateScreen, StartupLights & blinkTwice to Initialize Game
+
+animateScreen()
+startUpLights()
+blinkTwiceStart()
 
 
-
-// ** Creating Rounds Easy(3), Mid(5), Hard(7)
+// ^ Creating Rounds Easy(3), Mid(5), Hard(7)
 
 
 let freeze = false
-//let padGroup = document.querySelector('.pad-group')
 
 // Don't know why this works
 document.addEventListener("click", freezeClickOff, true);
@@ -489,6 +488,9 @@ const medRound = () => {
         resetDisplayMed()
     } else if (score >= 500 && lives > 0) {
         screenText.textContent = 'You Win!!'
+        startUpLights()
+        setTimeout(blinkAll, 4000)
+        setTimeout(blinkTwiceQuick, 4500)
     } else {
         screenText.textContent = 'Game Over!'
     }
@@ -506,12 +508,16 @@ const hardRound = () => {
         resetDisplayHard()
     } else if (score >= 500 && lives > 0) {
         screenText.textContent = 'You Win!!'
+        startUpLights()
+        setTimeout(blinkAll, 4000)
+        setTimeout(blinkTwiceQuick, 4500)
     } else {
         screenText.textContent = 'Game Over!'
     }
 
 }
 
+// ^ Creating Function that will initiate game play based on UI button click events
 
 const playEasyGame = () => {
     blinkThriceSlow()
@@ -533,7 +539,7 @@ const playHardGame = () => {
     // setInterval(easyRound, 8000)
 }
 
-
+// ^ Replay Pattern Function
 const replay = () => {
     if (randPatArr.length === 3) {
         playRand3Pattern()
@@ -545,21 +551,13 @@ const replay = () => {
 
 }
 
-const stopFunction = () => {
-    clearTimeout(easyRound)
-}
-
+// ^ Reset Functions
 const reset = () => {
     location.reload()
 
 }
 
-
-
-
-
-console.log(score)
-
+// ^ Button Variables Creation
 const easyBtn = document.querySelector('#start')
 const medBtn = document.querySelector('#med')
 const hardBtn = document.querySelector('#hard')
@@ -567,18 +565,9 @@ const replayBtn = document.querySelector('#replay')
 const resetBtn = document.querySelector('#reset')
 
 
-
+// ^ Adding Event Listeners to buttons
 easyBtn.addEventListener('click', playEasyGame)
 medBtn.addEventListener('click', playMedGame)
 hardBtn.addEventListener('click', playHardGame)
 replayBtn.addEventListener('click', replay)
 resetBtn.addEventListener('click', reset)
-
-
-
-
-// const checkBtn = document.querySelector('#check')
-// checkBtn.addEventListener('click', checkAnswer)
-
-
-// Need replay function
