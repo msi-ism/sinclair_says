@@ -193,33 +193,7 @@ const getRandPat = (num) => {
 }
 
 
-
-
-// const getEasyPat = () => {
-//     for (let i = 0; i < 3; i++) {
-//         let randomPad = Math.floor(Math.random() * padArr.length)
-//         easyPatArr.push(padObjArr[randomPad]['selectorVar'])
-//     }
-// }
 console.log(randPatArr)
-
-// const getMidPat = () => {
-//     for (let i = 0; i < 6; i++) {
-//         let randomPad = Math.floor(Math.random() * padArr.length)
-//         midPatArr.push(padObjArr[randomPad]['selectorVar'])
-//     }
-// }
-
-// console.log(midPatArr)
-
-// const getHardPat = () => {
-//     for (let i = 0; i < 9; i++) {
-//         let randomPad = Math.floor(Math.random() * padArr.length)
-//         hardPatArr.push(padObjArr[randomPad]['selectorVar'])
-//     }
-// }
-// console.log(hardPatArr)
-
 
 
 
@@ -320,6 +294,12 @@ const blinkTwiceQuick = () => {
     setTimeout(blinkAll, 500)
 }
 
+const blinkThriceSlow = () => {
+    setTimeout(blinkAll, 0)
+    setTimeout(blinkAll, 1000)
+    setTimeout(blinkAll, 2000)
+}
+
 const padTap = (pad) => {
     pad.style.boxShadow = padLight
     setTimeout(function () { offPad(pad); }, 250)
@@ -348,7 +328,7 @@ const resetDisplayMed = () => {
     if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
-        setTimeout(midRound, 3000)
+        setTimeout(medRound, 3000)
         round = 0
         userChoices = []
         randPatArr = []
@@ -371,14 +351,15 @@ const resetDisplayHard = () => {
 
 
 
-// ** Creating Round 1 - Easy
+// ** Creating Rounds Easy(3), Mid(5), Hard(7)
 
 
 const easyRound = () => {
     if (score < 500 && lives > 0) {
+        
         getRandPat(3)
-        playRand3Pattern()
-        setTimeout(showYourTurn, 2000)
+        setTimeout(playRand3Pattern, 2200)
+        setTimeout(showYourTurn, 4000)
         checkAnswer()
         displayResult()
         resetDisplayEasy()
@@ -389,7 +370,7 @@ const easyRound = () => {
     }
 }
 
-const midRound = () => {
+const medRound = () => {
     if (score < 500 && lives > 0) {
         getRandPat(5)
         playRand5Pattern()
@@ -424,13 +405,14 @@ const hardRound = () => {
 
 
 const playEasyGame = () => {
+    blinkThriceSlow()
     easyRound(playEasyGame)
     // setInterval(easyRound, 8000)
 }
 
 
 const playMedGame = () => {
-    midRound(playMedGame)
+    medRound(playMedGame)
     // setInterval(easyRound, 8000)
 }
 
@@ -462,6 +444,7 @@ const easyBtn = document.querySelector('#start')
 const medBtn = document.querySelector('#med')
 const hardBtn = document.querySelector('#hard')
 const replayBtn = document.querySelector('#replay')
+const resetBtn = document.querySelector('#reset')
 
 
 
@@ -469,6 +452,7 @@ easyBtn.addEventListener('click', playEasyGame)
 medBtn.addEventListener('click', playMedGame)
 hardBtn.addEventListener('click', playHardGame)
 replayBtn.addEventListener('click', replay)
+resetBtn.addEventListener('click', reset)
 
 
 
