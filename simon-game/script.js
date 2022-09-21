@@ -171,32 +171,47 @@ const showYourTurn = () => {
 // ** Begins Function Objects
 
 class Pad {
-    constructor(name, color, tone, selectorVar) {
+    constructor(name, color, tone, selectorVar, audioSrc) {
         this.name = name
         this.color = color
         this.tone = tone
         this.selectorVar = selectorVar
+        this.audioSrc = audioSrc
     }
     padTap() {
     }
+    playPad() {
+        let audio = new Audio(this.audioSrc)
+        audio.play()
+    }
 }
 
-const padObj1 = new Pad('pad-1', '#E8ECFB', 'A#', pad1)
-const padObj2 = new Pad('pad-2', '#B997C7', 'B#', pad2)
-const padObj3 = new Pad('pad-3', '#824D99', 'C#', pad3)
-const padObj4 = new Pad('pad-4', '#4D78C3', 'D#', pad4)
-const padObj5 = new Pad('pad-5', '#56A2AC', 'E#', pad5)
-const padObj6 = new Pad('pad-6', '#7EB775', 'F#', pad6)
-const padObj7 = new Pad('pad-7', '#CD2120', 'G#', pad7)
-const padObj8 = new Pad('pad-8', 'E57F33', 'A#', pad8)
-const padObj9 = new Pad('pad-9', '#D0B541', 'B#', pad9)
+
+
+const padObj1 = new Pad('pad-1', '#E8ECFB', 'A#', pad1, 'audio/pad2.mp3')
+const padObj2 = new Pad('pad-2', '#B997C7', 'B#', pad2, 'audio/pad2.mp3')
+const padObj3 = new Pad('pad-3', '#824D99', 'C#', pad3, 'audio/pad3.mp3')
+const padObj4 = new Pad('pad-4', '#4D78C3', 'D#', pad4, 'audio/pad4.mp3')
+const padObj5 = new Pad('pad-5', '#56A2AC', 'E#', pad5, 'audio/pad5.mp3')
+const padObj6 = new Pad('pad-6', '#7EB775', 'F#', pad6, 'audio/pad6.mp3')
+const padObj7 = new Pad('pad-7', '#CD2120', 'G#', pad7, 'audio/pad7.mp3')
+const padObj8 = new Pad('pad-8', 'E57F33', 'A#', pad8, 'audio/pad8.mp3')
+const padObj9 = new Pad('pad-9', '#D0B541', 'B#', pad9, 'audio/pad9.mp3')
 
 const padObjArr = [padObj1, padObj2, padObj3, padObj4, padObj5, padObj6, padObj7, padObj8, padObj9]
 
-console.log(padObjArr[2]['selectorVar'])
+
+pad1.addEventListener('click', padObjArr['audioSrc'])
+
+padObj1.playPad()
+
+
 
 // ** Adds Tap Lighting Effect to Individual Pads
 padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
+
+// ** Adds Tap Audio Play to Individual Pads
+// padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
 
 // ! ************************** Game Logic Begins ***************************************
@@ -354,11 +369,6 @@ const padTap = (pad) => {
 }
 
 
-const playSound = () => {
-    let audio = new Audio(`${padObjArr['audio']}`)
-        audio.play()
-}
-
 
 
 const wipeDisplay = () => {
@@ -458,7 +468,7 @@ const medRound = () => {
         screenText.textContent = 'Winner!'
     } else {
         screenText.textContent = 'Game Over!'
-    }        
+    }
 
 }
 
@@ -474,7 +484,7 @@ const hardRound = () => {
         screenText.textContent = 'Winner!'
     } else {
         screenText.textContent = 'Game Over!'
-    }    
+    }
 
 
 }
