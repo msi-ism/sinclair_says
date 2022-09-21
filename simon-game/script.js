@@ -226,9 +226,11 @@ console.log(randPatArr)
 // ** Creating Function to Check User Input against Pattern
 
 let score = 0
-let round = 0
+let lives = 3
 const scoreDisplay = document.getElementById('scorebox')
+const livesDisplay = document.getElementById('lives-box')
 scoreDisplay.textContent = score
+livesDisplay.textContent = lives
 
 let match = false
 const checkAnswer = () => {
@@ -253,10 +255,11 @@ const displayResult = () => {
         screenText.textContent = 'Correct!'
         blinkTwiceQuick()
         score += 100
-        round += 1
         scoreDisplay.textContent = score
     } else if (userChoices.length === randPatArr.length && match === false) {
         screenText.textContent = "That's not what I said!"
+        lives--
+        livesDisplay.textContent = lives
     } else {
         setTimeout(displayResult, 500) // run until true
     }
@@ -329,7 +332,7 @@ const wipeDisplay = () => {
 
 
 
-const resetDisplay = () => {
+const resetDisplayEasy = () => {
     if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
@@ -338,61 +341,137 @@ const resetDisplay = () => {
         userChoices = []
         randPatArr = []
     } else {
-        setTimeout(resetDisplay, 500)
+        setTimeout(resetDisplayEasy, 500)
+    }
+}
+const resetDisplayMed = () => {
+    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        setTimeout(midRound, 3000)
+        round = 0
+        userChoices = []
+        randPatArr = []
+    } else {
+        setTimeout(resetDisplayMed, 500)
+    }
+}
+const resetDisplayHard = () => {
+    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        setTimeout(hardRound, 3000)
+        round = 0
+        userChoices = []
+        randPatArr = []
+    } else {
+        setTimeout(resetDisplayHard, 500)
     }
 }
 
-const nextRound = () => {
-    resetDisplay()
-    easyRound()
-}
+
 
 // ** Creating Round 1 - Easy
 
 
 const easyRound = () => {
-    if (score < 400) {
+    if (score < 500 && lives > 0) {
         getRandPat(3)
         playRand3Pattern()
         setTimeout(showYourTurn, 2000)
         checkAnswer()
         displayResult()
-        resetDisplay()
+        resetDisplayEasy()
+    } else if (score >= 500 && lives > 0) {
+        screenText.textContent = 'Winner!'
+    } else {
+        screenText.textContent = 'Game Over!'
     }
 }
 
 const midRound = () => {
-    getRandPat(5)
-    playRand5Pattern()
-    setTimeout(showYourTurn, 3000)
-    checkAnswer()
-    displayResult()
-    resetDisplay()
+    if (score < 500 && lives > 0) {
+        getRandPat(5)
+        playRand5Pattern()
+        setTimeout(showYourTurn, 3000)
+        checkAnswer()
+        displayResult()
+        resetDisplayMed()
+    } else if (score >= 500 && lives > 0) {
+        screenText.textContent = 'Winner!'
+    } else {
+        screenText.textContent = 'Game Over!'
+    }        
 
 }
 
 const hardRound = () => {
-    getRandPat(7)
-    playRand7Pattern()
-    setTimeout(showYourTurn, 5000)
-    checkAnswer()
-    displayResult()
+    if (score < 500 && lives > 0) {
+        getRandPat(7)
+        playRand7Pattern()
+        setTimeout(showYourTurn, 5000)
+        checkAnswer()
+        displayResult()
+        resetDisplayHard()
+    } else if (score >= 500 && lives > 0) {
+        screenText.textContent = 'Winner!'
+    } else {
+        screenText.textContent = 'Game Over!'
+    }    
 
 
 }
 
 
-const playGame = () => {
-    easyRound(playGame)
-    console.log('First Execution')
+const playEasyGame = () => {
+    easyRound(playEasyGame)
     // setInterval(easyRound, 8000)
 }
 
 
+const playMedGame = () => {
+    midRound(playMedGame)
+    // setInterval(easyRound, 8000)
+}
+
+
+const playHardGame = () => {
+    easyRound(playHardGame)
+    // setInterval(easyRound, 8000)
+}
+
+
+const replay = () => {
+    if (randPatArr.length === 3) {
+        playRand3Pattern()
+    } else if (randPatArr.length === 5) {
+        playRand5Pattern()
+    } else {
+        playRand7Pattern()
+    }
+
+}
+
+
+
+
+
 console.log(score)
 
-const startBtn = document.querySelector('#start')
-startBtn.addEventListener('click', playGame)
+const easyBtn = document.querySelector('#start')
+const medBtn = document.querySelector('#med')
+const hardBtn = document.querySelector('#hard')
+const replayBtn = document.querySelector('#replay')
+
+
+
+easyBtn.addEventListener('click', playEasyGame)
+medBtn.addEventListener('click', playMedGame)
+hardBtn.addEventListener('click', playHardGame)
+replayBtn.addEventListener('click', replay)
+
+
+
 
 // const checkBtn = document.querySelector('#check')
 // checkBtn.addEventListener('click', checkAnswer)
