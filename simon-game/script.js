@@ -113,6 +113,15 @@ const blinkAllRed = () => {
 
 
 
+
+
+
+
+
+
+
+
+
 // ** Text Animation Function
 
 
@@ -342,8 +351,15 @@ const blinkTwiceRed = () => {
 const padTap = (pad) => {
     pad.style.boxShadow = padLight
     setTimeout(function () { offPad(pad); }, 250)
-
 }
+
+
+const playSound = () => {
+    let audio = new Audio(`${padObjArr['audio']}`)
+        audio.play()
+}
+
+
 
 const wipeDisplay = () => {
     screenText.textContent = ''

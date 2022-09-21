@@ -16,9 +16,14 @@ html {
 }
 
 body {
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    background-color: #56A2AC;
+    background-color: lavender; */
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 }
 
 h1{
@@ -61,16 +66,18 @@ h1{
 /* Container contains entire drum machine */
 
 .container {
+    grid-column-start: 2;
+    grid-row-start: 2;
     display: flex;
     justify-content: center;
     text-align: center;
     border: 5px solid black;
     width: 1000px;
     height: auto;
-    margin-top: 100px;
+    /* margin-top: 0px;
     margin-left: 50px;
     margin-right: 50px;
-    margin-bottom: 100px;
+    margin-bottom: 100px; */
     background-color: darkgrey;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
 
