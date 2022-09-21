@@ -209,7 +209,7 @@ padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this)
 
 
 const tapAudio = (pad) => {
-    let  audio = document.getElementById(`${pad.id}-audio`)
+    let audio = document.getElementById(`${pad.id}-audio`)
     audio.play()
 }
 
@@ -300,24 +300,14 @@ const checkAnswer = () => {
     return match = true
 }
 
-let cancelled = false
-
-const cancel = () => {
-    cancelled = true
-}
-
-const clearCancel = () => {
-    cancelled = false
-}
-
 
 const displayResult = () => {
-    if (userChoices.length === randPatArr.length && match === true && cancelled === false) {
+    if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
         blinkTwiceQuick()
         score += 100
         scoreDisplay.textContent = score
-    } else if (userChoices.length === randPatArr.length && match === false && cancelled === false) {
+    } else if (userChoices.length === randPatArr.length && match === false) {
         screenText.textContent = "That's not what I said!"
         lives--
         livesDisplay.textContent = lives
@@ -411,6 +401,10 @@ const wipeDisplay = () => {
     screenText.textContent = ''
 }
 
+let wrongAudio = new Audio(`audio/all_pads.mp3`)
+
+
+
 const resetDisplayEasy = () => {
     if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
@@ -424,6 +418,7 @@ const resetDisplayEasy = () => {
         setTimeout(animateScreen, 1750)
         setTimeout(easyRound, 3000)
         blinkTwiceRed()
+        wrongAudio.play()
         userChoices = []
         randPatArr = []
     } else {
@@ -471,16 +466,38 @@ const resetDisplayHard = () => {
 }
 
 
+
+
+
+
 // ** Creating Rounds Easy(3), Mid(5), Hard(7)
 
 
+let freeze = false
+//let padGroup = document.querySelector('.pad-group')
+
+// Don't know why this works
+document.addEventListener("click", freezeClickOff, true);
+    
+function freezeClickOff(e) {
+    if (freeze === true) {
+        e.stopPropagation();
+        e.preventDefault();
+ }
+}
+
+const clickOn = () => {
+    freeze = false
+}
+
 const easyRound = () => {
     if (score < 300 && lives > 0) {
+        freeze = true
         userChoices = []
         getRandPat(3)
         setTimeout(playRand3Pattern, 2100)
-        setTimeout(showYourTurn, 4000)
-        console.log(setTimeout(showYourTurn, 4000))
+        setTimeout(showYourTurn, 4500)
+        setTimeout(clickOn, 4500)
         checkAnswer()
         displayResult()
         resetDisplayEasy()
@@ -496,9 +513,12 @@ const easyRound = () => {
 
 const medRound = () => {
     if (score < 500 && lives > 0) {
+        freeze = true
+        userChoices = []
         getRandPat(5)
         setTimeout(playRand5Pattern, 2100)
-        setTimeout(showYourTurn, 6000)
+        setTimeout(showYourTurn, 6200)
+        setTimeout(clickOn, 6200)
         checkAnswer()
         displayResult()
         resetDisplayMed()
@@ -512,6 +532,7 @@ const medRound = () => {
 
 const hardRound = () => {
     if (score < 500 && lives > 0) {
+        userChoices = []
         getRandPat(7)
         setTimeout(playRand7Pattern)
         setTimeout(showYourTurn, 8000)
