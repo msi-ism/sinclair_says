@@ -18,11 +18,16 @@ const padArr = [pad1, pad2, pad3, pad4, pad5, pad6, pad7, pad8, pad9]
 
 // ** Pad Light On & Off Variable
 let padLight = '0px 0px 40px 20px rgba(253, 245, 232, 0.8), inset 0 0 25px 25px rgba(253, 245, 232, 0.3)'
+let redLight = '0px 0px 40px 20px rgba(253, 35, 33, 0.8), inset 0 0 25px 25px rgba(253, 43, 32, 0.3)'
 let lightOff = ''
 
 // ** Function to Light Individual Pads
 const lightPad = (pad) => {
     pad.style.boxShadow = padLight
+}
+
+const lightRedPad = (pad) => {
+    pad.style.boxShadow = redLight
 }
 // ** Function to UnLight Individual Pads
 const offPad = (pad) => {
@@ -78,6 +83,35 @@ const blinkAll = () => {
     setTimeout(function () { offPad(pad8); }, 250)
     setTimeout(function () { offPad(pad9); }, 250)
 }
+//** Creating function to blink all lights red */
+
+const blinkAllRed = () => {
+    setTimeout(function () { lightRedPad(pad1); }, 100)
+    setTimeout(function () { lightRedPad(pad2); }, 100)
+    setTimeout(function () { lightRedPad(pad3); }, 100)
+    setTimeout(function () { lightRedPad(pad4); }, 100)
+    setTimeout(function () { lightRedPad(pad5); }, 100)
+    setTimeout(function () { lightRedPad(pad6); }, 100)
+    setTimeout(function () { lightRedPad(pad7); }, 100)
+    setTimeout(function () { lightRedPad(pad8); }, 100)
+    setTimeout(function () { lightRedPad(pad9); }, 100)
+    setTimeout(function () { offPad(pad1); }, 250)
+    setTimeout(function () { offPad(pad2); }, 250)
+    setTimeout(function () { offPad(pad3); }, 250)
+    setTimeout(function () { offPad(pad4); }, 250)
+    setTimeout(function () { offPad(pad5); }, 250)
+    setTimeout(function () { offPad(pad6); }, 250)
+    setTimeout(function () { offPad(pad7); }, 250)
+    setTimeout(function () { offPad(pad8); }, 250)
+    setTimeout(function () { offPad(pad9); }, 250)
+}
+
+
+
+
+
+
+
 
 // ** Text Animation Function
 
@@ -300,6 +334,11 @@ const blinkThriceSlow = () => {
     setTimeout(blinkAll, 2000)
 }
 
+const blinkTwiceRed = () => {
+    setTimeout(blinkAllRed, 300)
+    setTimeout(blinkAllRed, 500)
+}
+
 const padTap = (pad) => {
     pad.style.boxShadow = padLight
     setTimeout(function () { offPad(pad); }, 250)
@@ -310,26 +349,39 @@ const wipeDisplay = () => {
     screenText.textContent = ''
 }
 
-
-
 const resetDisplayEasy = () => {
-    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+    if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(easyRound, 3000)
-        round = 0
+        blinkTwiceQuick()
+        userChoices = []
+        randPatArr = []
+    } else if (screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        setTimeout(easyRound, 3000)
+        blinkTwiceRed()
         userChoices = []
         randPatArr = []
     } else {
         setTimeout(resetDisplayEasy, 500)
     }
 }
+
 const resetDisplayMed = () => {
-    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+    if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(medRound, 3000)
-        round = 0
+        blinkTwiceQuick()
+        userChoices = []
+        randPatArr = []
+    } else if (screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        setTimeout(medRound, 3000)
+        blinkTwiceRed()
         userChoices = []
         randPatArr = []
     } else {
@@ -337,11 +389,18 @@ const resetDisplayMed = () => {
     }
 }
 const resetDisplayHard = () => {
-    if (screenText.textContent === 'Correct!' || screenText.textContent === "That's not what I said!") {
+    if (screenText.textContent === 'Correct!') {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(hardRound, 3000)
-        round = 0
+        blinkTwiceQuick()
+        userChoices = []
+        randPatArr = []
+    } else if (screenText.textContent === "That's not what I said!") {
+        setTimeout(wipeDisplay, 1000)
+        setTimeout(animateScreen, 1750)
+        setTimeout(hardRound, 3000)
+        blinkTwiceRed()
         userChoices = []
         randPatArr = []
     } else {
@@ -350,21 +409,22 @@ const resetDisplayHard = () => {
 }
 
 
-
 // ** Creating Rounds Easy(3), Mid(5), Hard(7)
 
 
 const easyRound = () => {
-    if (score < 500 && lives > 0) {
-        
+    if (score < 300 && lives > 0) {
         getRandPat(3)
-        setTimeout(playRand3Pattern, 2200)
+        setTimeout(playRand3Pattern, 2100)
         setTimeout(showYourTurn, 4000)
         checkAnswer()
         displayResult()
         resetDisplayEasy()
-    } else if (score >= 500 && lives > 0) {
+    } else if (score >= 300 && lives > 0) {
         screenText.textContent = 'Winner!'
+        startUpLights()
+        setTimeout(blinkAll, 4000)
+        setTimeout(blinkTwiceQuick, 4500)
     } else {
         screenText.textContent = 'Game Over!'
     }
@@ -373,8 +433,8 @@ const easyRound = () => {
 const medRound = () => {
     if (score < 500 && lives > 0) {
         getRandPat(5)
-        playRand5Pattern()
-        setTimeout(showYourTurn, 3000)
+        setTimeout(playRand5Pattern, 2100)
+        setTimeout(showYourTurn, 5000)
         checkAnswer()
         displayResult()
         resetDisplayMed()
@@ -389,8 +449,8 @@ const medRound = () => {
 const hardRound = () => {
     if (score < 500 && lives > 0) {
         getRandPat(7)
-        playRand7Pattern()
-        setTimeout(showYourTurn, 5000)
+        setTimeout(playRand7Pattern)
+        setTimeout(showYourTurn, 6000)
         checkAnswer()
         displayResult()
         resetDisplayHard()
@@ -412,12 +472,14 @@ const playEasyGame = () => {
 
 
 const playMedGame = () => {
+    blinkThriceSlow()
     medRound(playMedGame)
     // setInterval(easyRound, 8000)
 }
 
 
 const playHardGame = () => {
+    blinkThriceSlow()
     easyRound(playHardGame)
     // setInterval(easyRound, 8000)
 }
@@ -433,6 +495,18 @@ const replay = () => {
     }
 
 }
+
+// const reset = () => {
+//     setTimeout(wipeDisplay, 1000)
+//     setTimeout(animateScreen, 1750)
+//     score = 0
+//     scoreDisplay.textContent = score
+//     lives = 3
+//     livesDisplay.textContent = lives
+//     userChoices = []
+//     randPatArr = []
+
+// }
 
 
 
