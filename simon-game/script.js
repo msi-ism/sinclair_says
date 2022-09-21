@@ -1,5 +1,7 @@
 console.log('script is running...')
 
+let defaultDomState = document.body.innerHTML;
+
 // ! Declaring various variables & functions for game
 
 // ** Grabbing Pad Elements
@@ -298,13 +300,24 @@ const checkAnswer = () => {
     return match = true
 }
 
+let cancelled = false
+
+const cancel = () => {
+    cancelled = true
+}
+
+const clearCancel = () => {
+    cancelled = false
+}
+
+
 const displayResult = () => {
-    if (userChoices.length === randPatArr.length && match === true) {
+    if (userChoices.length === randPatArr.length && match === true && cancelled === false) {
         screenText.textContent = 'Correct!'
         blinkTwiceQuick()
         score += 100
         scoreDisplay.textContent = score
-    } else if (userChoices.length === randPatArr.length && match === false) {
+    } else if (userChoices.length === randPatArr.length && match === false && cancelled === false) {
         screenText.textContent = "That's not what I said!"
         lives--
         livesDisplay.textContent = lives
@@ -318,22 +331,30 @@ const displayResult = () => {
 
 let playRand3Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
+    setTimeout(function () { autoAudio(randPatArr[0]); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1250)
+    setTimeout(function () { autoAudio(randPatArr[1]); }, 1250)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 2000)
+    setTimeout(function () { autoAudio(randPatArr[2]); }, 2000)
 }
 
 let playRand5Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
-    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2000)
-    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 2500)
+    setTimeout(function () { autoAudio(randPatArr[0]); }, 500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1250)
+    setTimeout(function () { autoAudio(randPatArr[1]); }, 1250)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 2000)
+    setTimeout(function () { autoAudio(randPatArr[2]); }, 2000)
+    setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2750)
+    setTimeout(function () { autoAudio(randPatArr[3]); }, 2750)
+    setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 3500)
+    setTimeout(function () { autoAudio(randPatArr[4]); }, 3500)
 }
 
 let playRand7Pattern = () => {
     setTimeout(function () { padTap(randPatArr[0]['selectorVar']); }, 500)
-    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1000)
-    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1500)
+    setTimeout(function () { padTap(randPatArr[1]['selectorVar']); }, 1250)
+    setTimeout(function () { padTap(randPatArr[2]['selectorVar']); }, 1750)
     setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 2000)
     setTimeout(function () { padTap(randPatArr[4]['selectorVar']); }, 2500)
     setTimeout(function () { padTap(randPatArr[3]['selectorVar']); }, 3000)
@@ -455,9 +476,11 @@ const resetDisplayHard = () => {
 
 const easyRound = () => {
     if (score < 300 && lives > 0) {
+        userChoices = []
         getRandPat(3)
         setTimeout(playRand3Pattern, 2100)
         setTimeout(showYourTurn, 4000)
+        console.log(setTimeout(showYourTurn, 4000))
         checkAnswer()
         displayResult()
         resetDisplayEasy()
@@ -475,7 +498,7 @@ const medRound = () => {
     if (score < 500 && lives > 0) {
         getRandPat(5)
         setTimeout(playRand5Pattern, 2100)
-        setTimeout(showYourTurn, 5000)
+        setTimeout(showYourTurn, 6000)
         checkAnswer()
         displayResult()
         resetDisplayMed()
@@ -491,7 +514,7 @@ const hardRound = () => {
     if (score < 500 && lives > 0) {
         getRandPat(7)
         setTimeout(playRand7Pattern)
-        setTimeout(showYourTurn, 6000)
+        setTimeout(showYourTurn, 8000)
         checkAnswer()
         displayResult()
         resetDisplayHard()
@@ -536,17 +559,14 @@ const replay = () => {
 
 }
 
-// const reset = () => {
-//     setTimeout(wipeDisplay, 1000)
-//     setTimeout(animateScreen, 1750)
-//     score = 0
-//     scoreDisplay.textContent = score
-//     lives = 3
-//     livesDisplay.textContent = lives
-//     userChoices = []
-//     randPatArr = []
+const stopFunction = () => {
+    clearTimeout(easyRound)
+}
 
-// }
+const reset = () => {
+    location.reload()
+
+}
 
 
 
