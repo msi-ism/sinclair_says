@@ -158,7 +158,6 @@ const animateScreen = () => {
     for (let i = 0; i < splitText.length; i++) {
         screenText.innerHTML += `<span>${splitText[i]}</span>`
     }
-    console.log(screenText)
 
     const onTick = () => {
         const span = screenText.querySelectorAll("span")[char]
@@ -181,7 +180,6 @@ const animateScreen = () => {
 const showYourTurn = () => {
     screenText.textContent = 'Your turn...'
 }
-
 
 // & Creating Function Objects and Methods
 
@@ -252,7 +250,6 @@ const recordUserInput = (pad) => {
             pad
         )
     })
-    console.log(userChoices)
 }
 
 // ^ Creating Event Listeners For Each Pad to add to userChoices Array
