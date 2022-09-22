@@ -38,7 +38,7 @@ h2 {
     grid-row-start: 1;
     text-align: center;
     margin-top: 15px;
-    margin-bottom: 55px;
+    margin-bottom: 25px;
     font-size: 30px;
 
 }
@@ -54,6 +54,15 @@ h2 {
     font-size: 14px;
     margin-top: 15px;
 
+}
+
+.footer-text {
+    font-family: 'Silkscreen';
+    grid-column-start: 2;
+    grid-row-start: 3;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 25px;
 
 }
 
