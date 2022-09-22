@@ -6,17 +6,35 @@ This game is my own take on the classic game 'Simon Says'. The CPU will generate
 
 The UI is based on a drum machine used for music production. Each pad will play a specified sound (or group of sounds) like a drum machine.
 
-Game over is when the user fails 3 times or the score limit is broken.
+## How to Play
+        
+Welcome to Sinclair Says! This is a simple memory game based off of the childhood classic Simon Says. The game begins in freeplay mode where you are free to click pads & play their corresponding notes. Maybe you can write a little melody?
+   
+The second mode is the memory game you're familiar with. Click Easy, Medium, or Hard to play a round of that difficulty.
+After clicking a play button, the game will give you a countdown of 3 blinks before starting the pattern that you'll need to repeat once you see 'Your turn'.
+   
+Players win by reaching the score threshold which is 500 points or lose by running out of lives. Each time you guess incorrectly, you lose a life.
 
 ## Images
-![OG Simon Game](./images/simonsays.png)
-![My Simon Game](./images/sinclairsays.png)
+Original Simon Game
+
+<img src="./images/simonsays.png" width="400">
+
+My Simon Game
+
+<img src="./images/ss-new-ui.png" width="600">
+
+Drum Machine that inspired the design
+
+<img src="./images/maschine.png" width="400">
+
 
 
 ## Tech Stack
-    - Javascript
-    - HTML
-    - CSS
+    - Javascript - 60%
+    - CSS - 30%
+    - HTML - 10%
+    
 
 ## Upcoming Features
     - Difficulty Selection
@@ -24,3 +42,9 @@ Game over is when the user fails 3 times or the score limit is broken.
     - Mobile responsiveness
     - Volume control knob
     - High score tracker
+
+
+## Known Issues
+    - clicking too fast will cause sound to not play
+    - accidentally selecting pad during pattern playback will cause User input to not match
+    - sound popping when two sounds play too quickly in succession
