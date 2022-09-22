@@ -35,13 +35,13 @@ h2 {
 
 .title-text-div {
   font-family: "Silkscreen";
-  grid-column-start: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
   grid-row-start: 1;
   text-align: center;
   margin-top: 3px;
   margin-bottom: 5px;
   font-size: 30px;
-  align-self: end;
 }
 .title-text {
   text-decoration: underline;
@@ -63,14 +63,15 @@ h2 {
   grid-row-start: 2;
   text-align: center;
   padding: 12px;
-  font-size: 14px;
-  border: 3px solid black;
+  font-size: 13px;
+  border: 3px dashed black;
   height: auto;
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
-  background-color: whitesmoke;
+  background-color: #f4fef4;
   align-self: center;
+  box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
 }
 
 .how-to-play-text {
@@ -80,11 +81,15 @@ h2 {
   grid-row-start: 3;
   text-align: center;
   margin-top: 20px;
+  margin-bottom: 20px;
   margin-right: 5px;
   margin-left: 5px;
-  padding: 12px;
+  padding: 10px;
   width: auto;
   font-size: 13px;
+  border: 3px dashed black;
+  background-color: #f4fef4;
+  box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
 }
 
 .features-text {
@@ -93,14 +98,15 @@ h2 {
   grid-row-start: 2;
   text-align: center;
   padding: 12px;
-  font-size: 14px;
-  border: 3px solid black;
+  font-size: 13px;
+  border: 3px dashed black;
   height: auto;
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
-  background-color: whitesmoke;
   align-self: center;
+  background-color: #f4fef4;
+  box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
 }
 
 .screen {

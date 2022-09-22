@@ -23,6 +23,7 @@ const padArr = [pad1, pad2, pad3, pad4, pad5, pad6, pad7, pad8, pad9]
 // ^ Pad Light On & Off Box Shadow Variable
 let padLight = '0px 0px 20px 5px rgba(253, 245, 232, 0.5), inset 0 0 15px 20px rgba(253, 245, 232, 0.3)'
 let redLight = '0px 0px 20px 5px rgba(253, 35, 33, 0.5), inset 0 0 15px 20px rgba(253, 43, 32, 0.3)'
+let greenLight = '0px 0px 20px 5px rgba(144, 238, 144, 0.5), inset 0 0 15px 20px rgba(61, 226, 43, 0.3)'
 let lightOff = ''
 
 // ^ Function to Light Individual Pads
@@ -32,6 +33,10 @@ const lightPad = (pad) => {
 // ^ Function to Light Individual Pads Red
 const lightRedPad = (pad) => {
     pad.style.boxShadow = redLight
+}
+// ^ Function to Light Individual Pads Red
+const lightGreenPad = (pad) => {
+    pad.style.boxShadow = greenLight
 }
 // ^ Function to UnLight Individual Pads
 const offPad = (pad) => {
@@ -108,6 +113,29 @@ const blinkAllRed = () => {
     setTimeout(function () { offPad(pad9); }, 250)
 }
 
+const blinkAllGreen = () => {
+    setTimeout(function () { lightGreenPad(pad1); }, 100)
+    setTimeout(function () { lightGreenPad(pad2); }, 100)
+    setTimeout(function () { lightGreenPad(pad3); }, 100)
+    setTimeout(function () { lightGreenPad(pad4); }, 100)
+    setTimeout(function () { lightGreenPad(pad5); }, 100)
+    setTimeout(function () { lightGreenPad(pad6); }, 100)
+    setTimeout(function () { lightGreenPad(pad7); }, 100)
+    setTimeout(function () { lightGreenPad(pad8); }, 100)
+    setTimeout(function () { lightGreenPad(pad9); }, 100)
+    setTimeout(function () { offPad(pad1); }, 250)
+    setTimeout(function () { offPad(pad2); }, 250)
+    setTimeout(function () { offPad(pad3); }, 250)
+    setTimeout(function () { offPad(pad4); }, 250)
+    setTimeout(function () { offPad(pad5); }, 250)
+    setTimeout(function () { offPad(pad6); }, 250)
+    setTimeout(function () { offPad(pad7); }, 250)
+    setTimeout(function () { offPad(pad8); }, 250)
+    setTimeout(function () { offPad(pad9); }, 250)
+}
+
+
+
 // ^ Adds Tap Lighting Effect to Individual Pads Using For Each
 padArr.forEach(pad => { pad.addEventListener('click', function () { padTap(this); }, false) })
 
@@ -133,11 +161,21 @@ const blinkThriceSlow = () => {
     setTimeout(blinkAll, 0)
     setTimeout(blinkAll, 750)
     setTimeout(blinkAll, 1500)
+    setTimeout(countdownAudio, 0)
+    setTimeout(countdownAudio, 750)
+    setTimeout(countdownAudio, 1500)
 }
 // ^ Function that plays blinks RED quickly
 const blinkTwiceRed = () => {
     setTimeout(blinkAllRed, 300)
     setTimeout(blinkAllRed, 500)
+}
+
+
+// ^ Function that plays blinks RED quickly
+const blinkTwiceGreen= () => {
+    setTimeout(blinkAllGreen, 300)
+    setTimeout(blinkAllGreen, 500)
 }
 // ^ Function that lights pad when clicked by user
 const padTap = (pad) => {
@@ -226,6 +264,14 @@ const tapAudio = (pad) => {
 const autoAudio = (obj) => {
     obj.playPad()
 }
+// ^ Function created to play countdown audio
+
+const countdownAudio = () => {
+    autoAudio(padObj6)
+}
+
+
+
 
 // ^ For each to add the tapAudio function to each pad
 padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
@@ -233,11 +279,16 @@ padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(thi
 // ^ Create Variable for incorrect answer audio
 let rightAudio = new Audio(`audio/all-good.mp3`)
 
-let playCorrectAudio = () => {
+const playCorrectAudio = () => {
     rightAudio.play()
 }
 
-let wrongAudio = new Audio(`audio/all_pads.mp3`)
+let wrongAudio = new Audio(`audio/new-wrong.mp3`)
+
+const playWrongAudio = () => {
+    wrongAudio.play()
+}
+
 
 
 
@@ -304,7 +355,6 @@ const checkAnswer = () => {
 const displayResult = () => {
     if (userChoices.length === randPatArr.length && match === true) {
         screenText.textContent = 'Correct!'
-        blinkTwiceQuick()
         score += 100
         scoreDisplay.textContent = score
     } else if (userChoices.length === randPatArr.length && match === false) {
@@ -370,7 +420,7 @@ const resetDisplayEasy = () => {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(easyRound, 3000)
-        blinkTwiceQuick()
+        blinkTwiceGreen()
         setTimeout(playCorrectAudio, 100)
         userChoices = []
         randPatArr = []
@@ -379,7 +429,7 @@ const resetDisplayEasy = () => {
         setTimeout(animateScreen, 1750)
         setTimeout(easyRound, 3000)
         blinkTwiceRed()
-        wrongAudio.play()
+        setTimeout(playWrongAudio, 300)
         userChoices = []
         randPatArr = []
     } else {
@@ -392,7 +442,8 @@ const resetDisplayMed = () => {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(medRound, 3000)
-        blinkTwiceQuick()
+        blinkTwiceGreen()
+        setTimeout(playCorrectAudio, 100)
         userChoices = []
         randPatArr = []
     } else if (screenText.textContent === "That's not what I said!") {
@@ -400,6 +451,7 @@ const resetDisplayMed = () => {
         setTimeout(animateScreen, 1750)
         setTimeout(medRound, 3000)
         blinkTwiceRed()
+        setTimeout(playWrongAudio, 300)
         userChoices = []
         randPatArr = []
     } else {
@@ -412,7 +464,8 @@ const resetDisplayHard = () => {
         setTimeout(wipeDisplay, 1000)
         setTimeout(animateScreen, 1750)
         setTimeout(hardRound, 3000)
-        blinkTwiceQuick()
+        blinkTwiceGreen()
+        setTimeout(playCorrectAudio, 100)
         userChoices = []
         randPatArr = []
     } else if (screenText.textContent === "That's not what I said!") {
@@ -420,9 +473,9 @@ const resetDisplayHard = () => {
         setTimeout(animateScreen, 1750)
         setTimeout(hardRound, 3000)
         blinkTwiceRed()
+        setTimeout(playWrongAudio, 300)
         userChoices = []
         randPatArr = []
-    } else {
         setTimeout(resetDisplayHard, 500)
     }
 }
@@ -459,7 +512,7 @@ const clickOn = () => {
 }
 
 const easyRound = () => {
-    if (score < 500 && lives > 0) {
+    if (score < 300 && lives > 0) {
         freeze = true
         userChoices = []
         getRandPat(3)
@@ -472,18 +525,20 @@ const easyRound = () => {
     } else if (score >= 300 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
-        setTimeout(blinkAll, 4000)
-        setTimeout(blinkTwiceQuick, 4500)
-        setTimeout(playCorrectAudio, 200)
-        setTimeout(playCorrectAudio, 1200)
-        setTimeout(playCorrectAudio, 2200)
+        setTimeout(blinkAllGreen, 4000)
+        setTimeout(blinkTwiceGreen, 4500)
+        setTimeout(playCorrectAudio, 4500)
     } else {
         screenText.textContent = 'Game Over!'
+        setTimeout(blinkAllRed, 500)
+        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 2000)
+        setTimeout(playWrongAudio, 2500)
     }
 }
 
 const medRound = () => {
-    if (score < 500 && lives > 0) {
+    if (score < 300 && lives > 0) {
         freeze = true
         userChoices = []
         getRandPat(5)
@@ -493,19 +548,25 @@ const medRound = () => {
         checkAnswer()
         displayResult()
         resetDisplayMed()
-    } else if (score >= 500 && lives > 0) {
+    } else if (score >= 300 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
-        setTimeout(blinkAll, 4000)
-        setTimeout(blinkTwiceQuick, 4500)
+        setTimeout(blinkAllGreen, 4000)
+        setTimeout(blinkTwiceGreen, 4500)
+        setTimeout(playCorrectAudio, 4000)
     } else {
         screenText.textContent = 'Game Over!'
+        setTimeout(blinkAllRed, 500)
+        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 2000)
+        setTimeout(playWrongAudio, 2500)
     }
 
 }
 
 const hardRound = () => {
-    if (score < 500 && lives > 0) {
+    if (score < 300 && lives > 0) {
+        freeze = true
         userChoices = []
         getRandPat(7)
         setTimeout(playRand7Pattern, 2100)
@@ -514,13 +575,18 @@ const hardRound = () => {
         checkAnswer()
         displayResult()
         resetDisplayHard()
-    } else if (score >= 500 && lives > 0) {
+    } else if (score >= 300 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
-        setTimeout(blinkAll, 4000)
-        setTimeout(blinkTwiceQuick, 4500)
+        setTimeout(blinkAllGreen, 4000)
+        setTimeout(blinkTwiceGreen, 4500)
+        setTimeout(playCorrectAudio, 4500)
     } else {
         screenText.textContent = 'Game Over!'
+        setTimeout(blinkAllRed, 500)
+        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 2000)
+        setTimeout(playWrongAudio, 2500)
     }
 
 }
