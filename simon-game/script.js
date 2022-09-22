@@ -527,13 +527,14 @@ const easyRound = () => {
         startUpLights()
         setTimeout(blinkAllGreen, 4000)
         setTimeout(blinkTwiceGreen, 4500)
-        setTimeout(playCorrectAudio, 4500)
+        setTimeout(playCorrectAudio, 4000)
     } else {
         screenText.textContent = 'Game Over!'
-        setTimeout(blinkAllRed, 500)
-        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 500)
+        setTimeout(playWrongAudio, 700)
         setTimeout(blinkTwiceRed, 2000)
-        setTimeout(playWrongAudio, 2500)
+        setTimeout(playWrongAudio, 2200)
+
     }
 }
 
@@ -556,10 +557,10 @@ const medRound = () => {
         setTimeout(playCorrectAudio, 4000)
     } else {
         screenText.textContent = 'Game Over!'
-        setTimeout(blinkAllRed, 500)
-        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 500)
+        setTimeout(playWrongAudio, 700)
         setTimeout(blinkTwiceRed, 2000)
-        setTimeout(playWrongAudio, 2500)
+        setTimeout(playWrongAudio, 2200)
     }
 
 }
@@ -580,13 +581,13 @@ const hardRound = () => {
         startUpLights()
         setTimeout(blinkAllGreen, 4000)
         setTimeout(blinkTwiceGreen, 4500)
-        setTimeout(playCorrectAudio, 4500)
+        setTimeout(playCorrectAudio, 4000)
     } else {
         screenText.textContent = 'Game Over!'
-        setTimeout(blinkAllRed, 500)
-        setTimeout(playWrongAudio, 500)
+        setTimeout(blinkTwiceRed, 500)
+        setTimeout(playWrongAudio, 700)
         setTimeout(blinkTwiceRed, 2000)
-        setTimeout(playWrongAudio, 2500)
+        setTimeout(playWrongAudio, 2200)
     }
 
 }
