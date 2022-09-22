@@ -42,6 +42,7 @@ h2 {
   margin-top: 3px;
   margin-bottom: 5px;
   font-size: 30px;
+  align-self: end;
 }
 .title-text {
   text-decoration: underline;
