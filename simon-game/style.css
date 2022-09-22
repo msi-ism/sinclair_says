@@ -1,16 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Outline&family=Bungee+Shade&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Outline&family=Bungee+Shade&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen&display=swap");
 
 html {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 
 body {
@@ -22,382 +20,362 @@ body {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
-}
+    align-items: center;
+    }
 
-h1{
-    text-align: center;
+
+h1 {
+  text-align: center;
 }
 
 h2 {
+    font-size: 24px;
     text-decoration: underline;
 }
 
 .title-text-div {
-    font-family: 'Silkscreen';
-    grid-column-start: 2;
-    grid-row-start: 1;
-    text-align: center;
-    margin-top: 15px;
-    margin-bottom: 25px;
-    font-size: 30px;
-
+  font-family: "Silkscreen";
+  grid-column-start: 2;
+  grid-row-start: 1;
+  text-align: center;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  font-size: 30px;
 }
 .title-text {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .title-sub-text {
-    font-family: 'Silkscreen';
-    grid-column-start: 2;
-    grid-row-start: 1;
-    text-align: center;
-    font-size: 14px;
-    margin-top: 15px;
-
+  font-family: "Silkscreen";
+  grid-column-start: 2;
+  grid-row-start: 1;
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
-.footer-text {
-    font-family: 'Silkscreen';
-    grid-column-start: 2;
-    grid-row-start: 3;
-    text-align: center;
-    font-size: 12px;
-    margin-top: 25px;
-
+.tips-text {
+  font-family: "Silkscreen";
+  grid-column-start: 1;
+  grid-row-start: 2;
+  text-align: center;
+  margin-right: 50px;
+  margin-left: 50px;
+  padding: 12px;
+  font-size: 14px;
+  border: 3px solid black;
+  height: auto;
+  background-color: whitesmoke;
 }
 
-
-.play-text {
-    font-family: 'Silkscreen';
-    grid-column-start: 1;
-    grid-row-start: 2;
-    text-align: center;
-    margin-right: 55px;
-    margin-left: 55px;
-    font-size: 14px;
+.how-to-play-text {
+  font-family: "Silkscreen";
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 3;
+  text-align: center;
+  margin-top: 20px;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding: 12px;
+  width: auto;
+  font-size: 13px;
 }
 
-.play-text-2 {
-    font-family: 'Silkscreen';
-    grid-column-start: 3;
-    grid-row-start: 2;
-    text-align: center;
-    margin-right: 55px;
-    margin-left: 55px;
-    font-size: 14px;
+.features-text {
+  font-family: "Silkscreen";
+  grid-column-start: 3;
+  grid-row-start: 2;
+  text-align: center;
+  margin-right: 50px;
+  margin-left: 50px;
+  padding: 12px;
+  font-size: 14px;
+  border: 3px solid black;
+  height: auto;
+  background-color: whitesmoke;
 }
 
 .screen {
-    border: 3px solid black;
-    width: 100%;
-    margin: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4fef4;
-    box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
-    
+  border: 3px solid black;
+  width: 100%;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4fef4;
+  box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
 }
 
 .screen-text {
-    font-family: 'Press Start 2P';
-    font-size: 16px;
-
+  font-family: "Press Start 2P";
+  font-size: 16px;
 }
 
 .ui-text {
-    font-family: 'Silkscreen';
-    font-size: 11px;
-    padding-top: 8px;
-    text-shadow: 0px 5px 22px 22px white;
-    text-decoration: underline;
+  font-family: "Silkscreen";
+  font-size: 11px;
+  padding-top: 8px;
+  text-shadow: 0px 5px 22px 22px white;
+  text-decoration: underline;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-
+  margin: 0;
+  padding: 0;
 }
 
 /* Container contains entire drum machine */
 
 .container {
-    grid-column-start: 2;
-    grid-row-start: 2;
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-    grid-template-rows: 125px 1fr 1fr 1fr 1fr;
-    text-align: center;
-    border: 5px solid black;
-    width: 600px;
-    height: 500px;
-    background-color: rgba(164, 151, 164, 0.9);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
-
+  grid-column-start: 2;
+  grid-row-start: 2;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 125px 1fr 1fr 1fr 1fr;
+  text-align: center;
+  border: 5px solid black;
+  width: 600px;
+  height: 500px;
+  background-color: rgba(164, 151, 164, 0.9);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
 }
 
 .container > .header {
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 6;
-    display: flex;
-    height: auto;
-    width: 600px;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 6;
+  display: flex;
+  height: auto;
+  width: 600px;
 }
-
-
 
 .container > .pad-container {
-    display: inline-flex;
-    justify-content: center;
-    border-style: solid;
-    border-color: black;
-    grid-row-start: 2;
-    grid-column-start: 2;
-    grid-column-end: 6;
-    grid-row-end: 6;
-    height: 100%;
-    width: auto;
-  
+  display: inline-flex;
+  justify-content: center;
+  border-style: solid;
+  border-color: black;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-row-end: 6;
+  height: 100%;
+  width: auto;
 }
-
 
 /* Pad Group Parent */
 
 .pad-container > .pad-group {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    height: auto;
-    width: auto;
-    font-family: 'Helvetica';
-    margin-top: 25px;
-    margin-bottom: 35px;
-    margin-right: 8px;
-  
-    
-
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  height: auto;
+  width: auto;
+  font-family: "Helvetica";
+  margin-top: 25px;
+  margin-bottom: 35px;
+  margin-right: 8px;
 }
 
 .container > .brand-text {
-    color:rgba(0, 0, 0, 0.5);
-    font-family: 'Bungee';
-    font-size: 12px;
-    white-space: nowrap;
-    margin-top: 120px;
-    margin-bottom: 16px;
-    padding-left: 100px;
-    grid-column-start: 4;
-    grid-column-end: 5;
-    grid-row-start: 5;
-
-
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Bungee";
+  font-size: 12px;
+  white-space: nowrap;
+  margin-top: 120px;
+  margin-bottom: 16px;
+  padding-left: 100px;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 5;
 }
 
 .pad-group > .pad {
-    display: flex;
-    width: 85px;
-    height: 85px;
-    border: 3px solid rgba(0, 0, 0, 0.6);
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease 0s;
-    margin: 5px;
-   
-    
-
+  display: flex;
+  width: 85px;
+  height: 85px;
+  border: 3px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease 0s;
+  margin: 5px;
 }
 
 .pad-group > .pad-1 {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    background-color: #E8ECFB;
-    
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  background-color: #e8ecfb;
 }
 
 .pad-group > .pad-2 {
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    background-color: #B997C7;
-    
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: #b997c7;
 }
 .pad-group > .pad-3 {
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 3;
-    background-color: #824D99;
-    
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-color: #824d99;
 }
 .pad-group > .pad-4 {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    background-color: #4D78C3;
-    
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  background-color: #4d78c3;
 }
 .pad-group > .pad-5 {
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    background-color: #56A2AC ;
-    
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  background-color: #56a2ac;
 }
 .pad-group > .pad-6 {
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    background-color: #7EB775;
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  background-color: #7eb775;
 }
 .pad-group > .pad-7 {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 3;
-    grid-row-end: 3;
-    background-color:#CD2120;
-    
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  background-color: #cd2120;
 }
 .pad-group > .pad-8 {
-    grid-column-start: 2;
-    grid-column-end: 2;
-    grid-row-start: 3;
-    grid-row-end: 3;
-    background-color: #E57F33;
-    
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  background-color: #e57f33;
 }
 .pad-group > .pad-9 {
-    grid-column-start: 3;
-    grid-column-end: 3;
-    grid-row-start: 3;
-    grid-row-end: 3;
-    background-color: #D0B541
-    
+  grid-column-start: 3;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  background-color: #d0b541;
 }
 
 .child {
-    border: 2px solid black;
+  border: 2px solid black;
 }
 
 .container > .nav {
-    display: grid;
-    grid-row-start: 2;
-    grid-row-end: 6;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    font-family: 'VT323', monospace;
-    box-shadow: 0px 0px 1px 1px black;
-    width: 100%;
-    
-
+  display: grid;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  font-family: "VT323", monospace;
+  box-shadow: 0px 0px 1px 1px black;
+  width: 100%;
 }
 
 .nav > .reset {
-    grid-row-start: 5;
-    height: 1fr;
-    
-    
+  grid-row-start: 5;
+  height: 1fr;
 }
 
 .volume > .slider {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    margin-top: 15px;
+  grid-column-start: 1;
+  grid-row-start: 1;
+  margin-top: 15px;
 }
 
 .volume > .nav-text {
-    margin-top: 10px;
-    font-size: 10px;
+  margin-top: 10px;
+  font-size: 10px;
 }
 
 .nav > .replay {
-    grid-row-start: 4;
-    grid-column-start: 1;
-    height: 1fr;
+  grid-row-start: 4;
+  grid-column-start: 1;
+  height: 1fr;
 }
 
 .nav > .score {
-    grid-row-start: 2;
-    grid-column-start: 1;
-    height: 1fr;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+  grid-row-start: 2;
+  grid-column-start: 1;
+  height: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .score > .score-box {
-    border: 3px solid black;
-    height: 25px;
-    width: 75px;
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4fef4;
-    font-family: 'Silkscreen';
-    font-size: 20px;
-    text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.3);
+  border: 3px solid black;
+  height: 25px;
+  width: 75px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4fef4;
+  font-family: "Silkscreen";
+  font-size: 20px;
+  text-shadow: 0px 0px 22px 22px black;
+  box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.3);
 }
 
 .nav > .lives {
-    grid-row-start: 3;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    height: 1fr;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  height: 1fr;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .lives > .score-box {
-    border: 3px solid black;
-    height: 25px;
-    width: 75px;
-    display: flex;
-    margin-top: 5px;
-    align-items: center;
-    justify-content: center;
-    background-color: #f4fef4;
-    font-family: 'Silkscreen';
-    font-size: 20px;
-    text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.2);
+  border: 3px solid black;
+  height: 25px;
+  width: 75px;
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  justify-content: center;
+  background-color: #f4fef4;
+  font-family: "Silkscreen";
+  font-size: 20px;
+  text-shadow: 0px 0px 22px 22px black;
+  box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.2);
 }
-
 
 .nav > .start-game {
-    display: inline-block;
-    grid-row-start: 1;
-    grid-column-start: 1;
-    height: 1fr;
+  display: inline-block;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  height: 1fr;
 }
 .btn {
-    margin-top: 3%;
-    padding: 3px;
-    font-family: 'Silkscreen';
-    cursor: pointer;
-    border: 2px solid black;
-    border-radius: 10%;
-    text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
-    font-size: 10px;
-
+  margin-top: 3%;
+  padding: 3px;
+  font-family: "Silkscreen";
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 10%;
+  text-shadow: 0px 0px 22px 22px black;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
+  font-size: 10px;
 }
 
-
 span {
-    opacity: 0;
-    transition: all .7s step-end;
+  opacity: 0;
+  transition: all 0.7s step-end;
 }
 
 span.fade {
-    opacity: 1;
+  opacity: 1;
 }
-
