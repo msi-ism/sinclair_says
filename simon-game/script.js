@@ -512,7 +512,7 @@ const clickOn = () => {
 }
 
 const easyRound = () => {
-    if (score < 300 && lives > 0) {
+    if (score < 500 && lives > 0) {
         freeze = true
         userChoices = []
         getRandPat(3)
@@ -522,7 +522,7 @@ const easyRound = () => {
         checkAnswer()
         displayResult()
         resetDisplayEasy()
-    } else if (score >= 300 && lives > 0) {
+    } else if (score >= 500 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
         setTimeout(blinkAllGreen, 4000)
@@ -539,7 +539,7 @@ const easyRound = () => {
 }
 
 const medRound = () => {
-    if (score < 300 && lives > 0) {
+    if (score < 500 && lives > 0) {
         freeze = true
         userChoices = []
         getRandPat(5)
@@ -549,7 +549,7 @@ const medRound = () => {
         checkAnswer()
         displayResult()
         resetDisplayMed()
-    } else if (score >= 300 && lives > 0) {
+    } else if (score >= 500 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
         setTimeout(blinkAllGreen, 4000)
@@ -566,7 +566,7 @@ const medRound = () => {
 }
 
 const hardRound = () => {
-    if (score < 300 && lives > 0) {
+    if (score < 500 && lives > 0) {
         freeze = true
         userChoices = []
         getRandPat(7)
@@ -576,7 +576,7 @@ const hardRound = () => {
         checkAnswer()
         displayResult()
         resetDisplayHard()
-    } else if (score >= 300 && lives > 0) {
+    } else if (score >= 500 && lives > 0) {
         screenText.textContent = 'You Win!!'
         startUpLights()
         setTimeout(blinkAllGreen, 4000)
