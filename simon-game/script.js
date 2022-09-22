@@ -21,8 +21,8 @@ const padArr = [pad1, pad2, pad3, pad4, pad5, pad6, pad7, pad8, pad9]
 // & Pad Lighting Effects
 
 // ^ Pad Light On & Off Box Shadow Variable
-let padLight = '0px 0px 20px 20px rgba(253, 245, 232, 0.6), inset 0 0 25px 25px rgba(253, 245, 232, 0.3)'
-let redLight = '0px 0px 20px 20px rgba(253, 35, 33, 0.6), inset 0 0 25px 25px rgba(253, 43, 32, 0.3)'
+let padLight = '0px 0px 20px 5px rgba(253, 245, 232, 0.6), inset 0 0 15px 20px rgba(253, 245, 232, 0.3)'
+let redLight = '0px 0px 20px 5px rgba(253, 35, 33, 0.6), inset 0 0 15px 20px rgba(253, 43, 32, 0.3)'
 let lightOff = ''
 
 // ^ Function to Light Individual Pads

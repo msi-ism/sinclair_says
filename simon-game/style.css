@@ -38,7 +38,7 @@ h1{
     align-items: center;
     justify-content: center;
     background-color: #f4fef4;
-    box-shadow: 0px 0px 40px 25px rgba(255, 250, 232, 0.5);
+    box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
     
 }
 
@@ -52,7 +52,8 @@ h1{
     font-family: 'Silkscreen';
     font-size: 11px;
     padding-top: 8px;
-    text-shadow: 0px 0px 22px 22px black;
+    text-shadow: 0px 5px 22px 22px white;
+    text-decoration: underline;
 }
 
 * {
@@ -73,7 +74,7 @@ h1{
     border: 5px solid black;
     width: 600px;
     height: 500px;
-    background-color: darkgrey;
+    background-color: rgba(164, 151, 164, 0.9);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
 
 }
@@ -86,8 +87,6 @@ h1{
     display: flex;
     height: auto;
     width: 600px;
-    box-shadow: 0px 0px 2px 2px black;
-    
 }
 
 
@@ -116,21 +115,22 @@ h1{
     height: auto;
     width: auto;
     font-family: 'Helvetica';
-    margin-top: 20px;
+    margin-top: 25px;
     margin-bottom: 35px;
+    margin-right: 8px;
   
     
 
 }
 
 .container > .brand-text {
-    color: black;
-    font-family: 'Bungee Shade';
+    color:rgba(0, 0, 0, 0.5);
+    font-family: 'Bungee';
     font-size: 12px;
     white-space: nowrap;
     margin-top: 120px;
     margin-bottom: 16px;
-    padding-left: 70px;
+    padding-left: 100px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 5;
@@ -142,8 +142,8 @@ h1{
     display: flex;
     width: 85px;
     height: 85px;
-    border: 3px solid rgba(0, 0, 0, 0.7);
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease 0s;
     margin: 5px;
    
@@ -286,7 +286,7 @@ h1{
     font-family: 'Silkscreen';
     font-size: 20px;
     text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 0px 40px 25px rgba(255, 250, 232, 0.3);
+    box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.3);
 }
 
 .nav > .lives {
@@ -311,7 +311,7 @@ h1{
     font-family: 'Silkscreen';
     font-size: 20px;
     text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 0px 40px 25px rgba(255, 250, 232, 0.3);
+    box-shadow: 0px 0px 20px 10px rgba(255, 250, 232, 0.2);
 }
 
 
@@ -329,7 +329,7 @@ h1{
     border: 2px solid black;
     border-radius: 10%;
     text-shadow: 0px 0px 22px 22px black;
-    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.2);
     font-size: 10px;
 
 }
