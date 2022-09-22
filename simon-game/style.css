@@ -16,7 +16,7 @@ html {
 body {
     /* display: flex;
     justify-content: center;*/
-    background-color: blueviolet; 
+    background-color: rgba(213, 184, 255);
     height: 100%;
     width: 100%;
     display: grid;
@@ -26,8 +26,56 @@ body {
 
 h1{
     text-align: center;
- 
+}
 
+h2 {
+    text-decoration: underline;
+}
+
+.title-text-div {
+    font-family: 'Silkscreen';
+    grid-column-start: 2;
+    grid-row-start: 1;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 55px;
+    font-size: 30px;
+
+}
+.title-text {
+    text-decoration: underline;
+}
+
+.title-sub-text {
+    font-family: 'Silkscreen';
+    grid-column-start: 2;
+    grid-row-start: 1;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 15px;
+
+
+}
+
+
+.play-text {
+    font-family: 'Silkscreen';
+    grid-column-start: 1;
+    grid-row-start: 2;
+    text-align: center;
+    margin-right: 55px;
+    margin-left: 55px;
+    font-size: 14px;
+}
+
+.play-text-2 {
+    font-family: 'Silkscreen';
+    grid-column-start: 3;
+    grid-row-start: 2;
+    text-align: center;
+    margin-right: 55px;
+    margin-left: 55px;
+    font-size: 14px;
 }
 
 .screen {
