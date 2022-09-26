@@ -1,5 +1,9 @@
 # Project 1 - Sinclair (Simon) Says
 
+## Link to Game
+
+https://msi-ism.github.io/projects/simon-game/
+
 ## Description
 
 This game is my own take on the classic game 'Simon Says'. The CPU will generate a pattern of lights and sound and the user must repeat the pattern correctly to score.

@@ -271,8 +271,6 @@ const countdownAudio = () => {
 }
 
 
-
-
 // ^ For each to add the tapAudio function to each pad
 padArr.forEach(pad => { pad.addEventListener('click', function () { tapAudio(this); }, false) })
 
@@ -288,7 +286,6 @@ let wrongAudio = new Audio(`audio/new-wrong.mp3`)
 const playWrongAudio = () => {
     wrongAudio.play()
 }
-
 
 
 
@@ -501,9 +498,6 @@ function freezeClickOff(e) {
 const clickOn = () => {
     freeze = false
 }
-
-
-
 
 
 // ^ Calling Startup Sequence to initialize the game
