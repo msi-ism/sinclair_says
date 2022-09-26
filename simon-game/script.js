@@ -523,11 +523,6 @@ startupSeq()
 
 // ^ Creating Rounds Easy(3), Mid(5), Hard(7)
 
-
-
-
-// Don't know why this works
-
 const easyRound = () => {
     if (score < 500 && lives > 0) {
         freeze = true

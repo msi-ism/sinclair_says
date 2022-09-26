@@ -37,11 +37,16 @@ Drum Machine that inspired the design
     
 
 ## Upcoming Features
-    - Difficulty Selection
-    - Freeplay recording feature with local saves
-    - Mobile responsiveness
-    - Volume control knob
-    - High score tracker
+- Increasing difficulty with progress
+- Record option for freeplay mode with local saves
+- High score tracker
+- Option to select different tone types
+- Volume Control Knob
+- Mobile Responsiveness
+- Option to switch to 'endless' mode
+- More information displayed on screen
+- Animate all on-screen text
+- Increasing pattern speed incrementally based on difficulty
 
 
 ## Known Issues
