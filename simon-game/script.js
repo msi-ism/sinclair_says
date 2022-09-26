@@ -476,6 +476,7 @@ const resetDisplayHard = () => {
         setTimeout(playWrongAudio, 300)
         userChoices = []
         randPatArr = []
+    } else {
         setTimeout(resetDisplayHard, 500)
     }
 }
@@ -484,20 +485,10 @@ const resetDisplayHard = () => {
 
 // & Begins calling Functions to Initialize Game
 
-
-// ^ Calling animateScreen, StartupLights & blinkTwice to Initialize Game
-
-animateScreen()
-startUpLights()
-blinkTwiceStart()
-
-
-// ^ Creating Rounds Easy(3), Mid(5), Hard(7)
-
+// ^ Creating Function to disable clicking on DOM
 
 let freeze = false
 
-// Don't know why this works
 document.addEventListener("click", freezeClickOff, true);
     
 function freezeClickOff(e) {
@@ -510,6 +501,32 @@ function freezeClickOff(e) {
 const clickOn = () => {
     freeze = false
 }
+
+
+
+
+
+// ^ Calling Startup Sequence to initialize the game
+
+
+
+const startupSeq = () => {
+    freeze = true
+    animateScreen()
+    startUpLights()
+    blinkTwiceStart()
+    setTimeout(clickOn, 4500)
+}
+startupSeq()
+
+
+
+// ^ Creating Rounds Easy(3), Mid(5), Hard(7)
+
+
+
+
+// Don't know why this works
 
 const easyRound = () => {
     if (score < 500 && lives > 0) {
