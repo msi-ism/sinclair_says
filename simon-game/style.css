@@ -12,16 +12,16 @@ html {
 }
 
 body {
-    /* display: flex;
-    justify-content: center;*/
-    background-color: rgba(213, 184, 255);
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    justify-items: center;
-    }
+  /* display: flex;
+  justify-content: center;*/
+  background-color: rgba(213, 184, 255);
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  justify-items: center;
+  }
 
 
 h1 {
@@ -76,6 +76,7 @@ h2 {
   align-self: center;
   box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
 }
+
 
 .how-to-play-text {
   display: flex;
@@ -221,7 +222,7 @@ h2 {
   width: 85px;
   height: 85px;
   border: 3px solid rgba(0, 0, 0, 0.6);
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.4);
   transition: all 0.3s ease 0s;
   margin: 5px;
 }
