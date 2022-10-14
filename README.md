@@ -2,7 +2,7 @@
 
 ## Link to Game
 
-https://msi-ism.github.io/projects/simon-game/
+https://msi-ism.github.io/sinclair_says/
 
 ## Description
 
