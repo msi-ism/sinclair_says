@@ -1,4 +1,4 @@
-# Project 1 - Sinclair (Simon) Says
+Sinclair (Simon) Says
 
 ## Link to Game
 
