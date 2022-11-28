@@ -68,13 +68,17 @@ h2 {
   padding: 12px;
   font-size: 13px;
   border: 3px dashed black;
-  height: auto;
+  height: 375px;
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
   background-color: #f4fef4;
   align-self: center;
   box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
+}
+
+.tips-text > p { 
+  margin-top: 5px;
 }
 
 
@@ -90,9 +94,9 @@ h2 {
   margin-bottom: 20px;
   margin-right: 5px;
   margin-left: 5px;
-  padding: 8px;
+  padding: 15px;
   width: auto;
-  height: 200px;
+  height: auto;
   font-size: 13px;
   border: 3px dashed black;
   background-color: #f4fef4;
@@ -101,7 +105,10 @@ h2 {
   flex: 2;
   flex-direction: column;
   align-items: center;
+}
 
+.how-to-play-text > p {
+  margin-top: 5px;
 }
 
 .features-text {
@@ -112,13 +119,17 @@ h2 {
   padding: 12px;
   font-size: 13px;
   border: 3px dashed black;
-  height: auto;
+  height: 375px;
   width: auto;
   margin-left: 50px;
   margin-right: 50px;
   align-self: center;
   background-color: #f4fef4;
   box-shadow: 0px 0px 35px 15px rgba(255, 250, 232, 0.5);
+}
+
+.features-text > p {
+  margin-top: 5px;
 }
 
 .screen {
