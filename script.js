@@ -249,6 +249,8 @@ const padObj7 = new Pad('pad-7', '#CD2120', 'G#', pad7, 'audio/pad7.mp3')
 const padObj8 = new Pad('pad-8', 'E57F33', 'A#', pad8, 'audio/pad8.mp3')
 const padObj9 = new Pad('pad-9', '#D0B541', 'B#', pad9, 'audio/pad9.mp3')
 
+console.log(padObj1['selectorVar'])
+
 // ^ Placing Pad Objects in array for future use
 const padObjArr = [padObj1, padObj2, padObj3, padObj4, padObj5, padObj6, padObj7, padObj8, padObj9]
 
@@ -328,6 +330,7 @@ const scoreDisplay = document.getElementById('scorebox')
 const livesDisplay = document.getElementById('lives-box')
 scoreDisplay.textContent = score
 livesDisplay.textContent = lives
+
 
 // ^ Creating Function to Check User Input against Pattern
 let match = false
