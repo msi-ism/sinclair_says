@@ -476,7 +476,7 @@ span.fade {
     padding: 12px;
     font-size: 13px;
     border: 3px dashed black;
-    height: 375px;
+    height: auto;
     width: auto;
     margin-left: 50px;
     margin-right: 50px;
@@ -577,8 +577,8 @@ span.fade {
     grid-template-columns: 20% 20% 20% 20% 20%;
     grid-template-rows: 100px 1fr 1fr 1fr 1fr;
     text-align: center;
-    border: 2px solid black;
-    width: 390px;
+    border: 1px solid black;
+    width: 95vw;
     height: 375px;
     background-color: rgba(164, 151, 164, 0.9);
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
@@ -597,13 +597,12 @@ span.fade {
   .container > .pad-container {
     display: inline-flex;
     justify-content: center;
-    border-style: solid;
-    border-color: black;
+    border: 1px solid black;
     grid-row-start: 2;
     grid-column-start: 2;
     grid-column-end: 6;
     grid-row-end: 6;
-    height: 100%;
+    height: auto;
     width: auto;
   }
   
@@ -626,9 +625,9 @@ span.fade {
     font-family: "Bungee";
     font-size: 12px;
     white-space: nowrap;
-    margin-top: 60px;
-    margin-bottom: 8px;
-    padding-left: 50px;
+    margin-top: 57px;
+    margin-bottom: 10px;
+    padding-left: 47px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 5;
@@ -636,8 +635,8 @@ span.fade {
   
   .pad-group > .pad {
     display: flex;
-    width: 50px;
-    height: 50px;
+    width: 47px;
+    height: 47px;
     border: 3px solid rgba(0, 0, 0, 0.6);
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease 0s;
